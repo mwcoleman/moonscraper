@@ -7,7 +7,7 @@ Outputs 1) a JSON of your moonboard account logbook; 2) accompanying screenshots
 ## Acknowledgements
 Selenium code based on https://github.com/yesoer/MoonPlotter 
 
-## usage
+## Usage
 `python main.py -u [USERNAME] -p [PASSWORD] -b [BOARD] -o [OUTPUT PATH]`
 
 Where `BOARD` is one of {0: 2020 mini, 1: 2019, 2: 2017, 3: 2016}
