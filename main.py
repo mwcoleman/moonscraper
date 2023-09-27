@@ -54,7 +54,7 @@ class Scraper:
             "Feb": 2,
             "Mar": 3,
             "Apr": 4,
-            "Mai": 5,
+            "May": 5,
             "Jun": 6,
             "Jul": 7,
             "Aug": 8,
@@ -106,7 +106,8 @@ class Scraper:
 
         # create list of elements
         res = []
-        def any_nested(list, key): return any([k == key for k, _, _ in list])
+        # TODO: What even..
+        def any_nested(entry_list, entry_text): return any([k == entry_text for k, _, _ in entry_list])
         
         # 
         
@@ -170,9 +171,11 @@ class Scraper:
                     driver.get_screenshot_as_file(img_path)       
                 
                 # get data
-                if not any_nested(res, entry.text):
-                    res_entry = (entry.text, entry_date, img_path)  # (route info, date)
-                    res.append(res_entry)
+                # if not any_nested(res, entry.text):
+                res_entry = (entry.text, entry_date, img_path)  # (route info, date)
+                res.append(res_entry)
+                # else:
+                    # pass
             
             # Navigate to the next page by clicking on the number
             next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]

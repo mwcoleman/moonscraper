@@ -12,3 +12,12 @@ Selenium code based on https://github.com/yesoer/MoonPlotter
 
 Where `BOARD` is one of {0: 2020 mini, 1: 2019, 2: 2017, 3: 2016}
 and `OUTPUT PATH` is relative output where `data.json` and `/images/` are saved
+
+
+## TODO
+
+- Integrate with reflex logbook
+- Log attempts for each problem
+- Dynamic wait for element (currently a simple timer)
+- CLI option to specify date
+- Check existing data and only scrape newer dates
