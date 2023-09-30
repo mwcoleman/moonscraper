@@ -7,6 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import logging
 import itertools
 import datetime
+import re
 
 import os, json, sys, argparse, time, pathlib
 
@@ -198,7 +199,7 @@ class Scraper:
             # Break early if we found date's older than the oldest wanted
             if found_date:
                 break
-            
+
             # Navigate to the next page by clicking on the number
             next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]
             next_page_clicker.click()
@@ -208,17 +209,37 @@ class Scraper:
         # process data
         formatted_data = []
         for (data, log_date, img_name) in res:
+            # e.g. 
+            # "STANDARD AND POOR'S\n [0]
+            # Vincent Minecci\n6B+\n [1]
+            # Feet follow hands\n [2]
+            # You rated this problem\n [3]
+            # 2nd try\n [4] . (Flashed, [2nd/3rd/4th]... try, Project ([1/2/3/...]))
+            # 40° MoonBoard" [5]
             data_arr = data.split('\n')
             day, month, year = log_date.split('\n')[0].split(' ')
             day, month, year = int(day), self.MONTH_MAP[month], int(year)
 
+            # TODO: Ugly text wrangling
             formatted = {
                 'Name': data_arr[0],
                 'Setter': data_arr[1],
                 'Grade': data_arr[2].split('.')[0],
+                'Attempts': data_arr[5],
                 'Date': (day, month, year),
                 'png': img_name
             }
+
+            # Convert attempt string
+            if formatted["Attempts"] == "Flashed":
+                formatted["Attempts"] = 1
+            else:
+                formatted["Attempts"] = int(
+                    re.search(
+                        r'\d+', 
+                        formatted["Attempts"]
+                    ).group()
+                )
 
             formatted_data.append(formatted)
 
