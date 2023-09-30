@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import logging
 import itertools
+import datetime
 
 import os, json, sys, argparse, time, pathlib
 
@@ -64,8 +65,11 @@ class Scraper:
             "Dec": 12
         }
 
-    def fetch_data(self, USERNAME: str, PASSWORD: str) -> dict:
-
+    def fetch_data(self, USERNAME: str, PASSWORD: str, newer_than: str) -> dict:
+        
+        newer_than = "01-01-01" if newer_than is None else newer_than
+        newer_than = datetime.datetime.strptime(newer_than, "%d-%m-%y")
+        
         # use the installed GeckoDriver with Selenium
         fireFoxOptions = webdriver.FirefoxOptions()
         fireFoxOptions.headless = not self.DEBUG
@@ -117,10 +121,10 @@ class Scraper:
 
         _logger.info(f"{len(page_elements) + 1} pages of dates found in logbook..")
 
+        found_date = False
         # Iterate through pages, and then dates
         for i, _ in enumerate(page_elements):
             # Can't directly work with page elements as they go stale
-
             _logger.info(f"Processing page {i+1}")
             # Used to find individual entries
             main_section = driver.find_element(By.ID,"main-section")
@@ -137,6 +141,8 @@ class Scraper:
                 itertools.repeat(value, count) 
                 for value, count in zip(date_texts, num_problems_per_date)
             )
+
+
             
 
             # get a tag expanders for the various days
@@ -145,6 +151,11 @@ class Scraper:
 
             # Click to expand all dates
             for date_expander, header in zip(date_expanders, headers):
+                datetext = header.text.split('\n')[0]
+                # Text if clickable date is older than oldest wanted date
+                if datetime.datetime.strptime(datetext, "%d %b %y") < newer_than:
+                    found_date = True
+                    break
                 date_expander.click()
                 time.sleep(1)
 
@@ -160,7 +171,14 @@ class Scraper:
             entries = entries[::2]
 
             print(f"Page {i + 1} - #Entries: {len(entries)} ")
-            for (entry, entry_date) in zip(entries, repeated_date_list):
+            for i, (entry, entry_date) in enumerate(zip(entries, repeated_date_list)):
+                
+                # # Test if we've hit date criteria
+                # if datetime.strptime(entry_date, "%d %b %y") < newer_than:
+                #     # Break inner and outer loop
+                #     found_date = True
+                #     break
+                
                 entry_name = entry.text.split('\n')[0]
                 img_path = os.path.join(self.IMAGE_PATH, entry_name.replace(" ","_")+".png")
                 if not os.path.isfile(img_path):
@@ -177,6 +195,10 @@ class Scraper:
                 # else:
                     # pass
             
+            # Break early if we found date's older than the oldest wanted
+            if found_date:
+                break
+            
             # Navigate to the next page by clicking on the number
             next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]
             next_page_clicker.click()
@@ -185,9 +207,9 @@ class Scraper:
         _logger.info(f"Completed scraping {len(res)} entries. Formatting and storing..")
         # process data
         formatted_data = []
-        for (data, date, img_name) in res:
+        for (data, log_date, img_name) in res:
             data_arr = data.split('\n')
-            day, month, year = date.split('\n')[0].split(' ')
+            day, month, year = log_date.split('\n')[0].split(' ')
             day, month, year = int(day), self.MONTH_MAP[month], int(year)
 
             formatted = {
@@ -214,10 +236,11 @@ def main():
                         help='Board: 0-2020Mini, 1-2019, 2-2017, 3-2016')
     parser.add_argument("-d", action='store_false')
     parser.add_argument("-o", default="./", help="output path for json and images")
+    parser.add_argument("--newer-than", default=None, help='dd-mm-yy to set as the oldest date to scrape')
     args = parser.parse_args()
 
     scraper = Scraper(args.d, output_path=args.o)
-    data = scraper.fetch_data(args.u, args.p)
+    data = scraper.fetch_data(args.u, args.p, args.newer_than)
     data_json = json.dumps(data, indent=4)
 
     with open(os.path.join(args.o,'data.json'), 'w') as f:
