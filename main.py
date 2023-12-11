@@ -7,9 +7,12 @@ from selenium.webdriver.support import expected_conditions as EC
 import logging
 import itertools
 import bisect
+import pandas as pd
 import os, json, sys, argparse, time, pathlib
+import getpass
 
-from datetime import datetime
+
+from datetime import datetime, timedelta
 
 
 getGecko_installed = True
@@ -67,7 +70,13 @@ class Scraper:
             "Dec": 12
         }
 
-    def fetch_data(self, USERNAME: str, PASSWORD: str, board_number: int, from_date: str = "30-01-99") -> dict:
+    def fetch_data(
+            self, 
+            USERNAME: str, 
+            PASSWORD: str, 
+            board_number: int, 
+            from_date: str, 
+            ):
 
         # use the installed GeckoDriver with Selenium
         fireFoxOptions = webdriver.FirefoxOptions()
@@ -176,6 +185,7 @@ class Scraper:
             entries = entries[::2]
 
             print(f"Page {i + 1} - #Entries: {len(entries)} ")
+            # Entries has been sliced to the from_date
             for (entry, entry_date) in zip(entries, repeated_date_list):
                 entry_name = entry.text.split('\n')[0]
                 img_path = os.path.join(self.IMAGE_PATH, entry_name.replace(" ","_")+".png")
@@ -204,21 +214,25 @@ class Scraper:
                 
         _logger.info(f"Completed scraping {len(res)} entries. Formatting and storing..")
         # process data
-        formatted_data = []
-        for (data, date, img_name) in res:
-            data_arr = data.split('\n')
-            day, month, year = date.split('\n')[0].split(' ')
-            day, month, year = int(day), self.MONTH_MAP[month], int(year)
+        # if return_format == 'json':
+        #     formatted_data = []
+        #     for (data, date, img_name) in res:
+        #         data_arr = data.split('\n')
+        #         day, month, year = date.split('\n')[0].split(' ')
+        #         day, month, year = int(day), self.MONTH_MAP[month], int(year)
 
-            formatted = {
-                'Name': data_arr[0],
-                'Setter': data_arr[1],
-                'Grade': data_arr[2].split('.')[0],
-                'Date': (day, month, year),
-                'png': img_name
-            }
+        #         formatted = {
+        #             'Name': data_arr[0],
+        #             'Setter': data_arr[1],
+        #             'Grade': data_arr[2].split('.')[0],
+        #             'Date': (day, month, year),
+        #             'png': img_name,
+        #             'raw_text': data
+        #         }
 
-            formatted_data.append(formatted)
+        #         formatted_data.append(formatted)
+        # else:
+        return pd.DataFrame(([r[1],r[0],r[2]] for r in res), columns=['date', 'text', 'img_path'])
 
         # cleanup
         driver.quit()
@@ -228,21 +242,54 @@ class Scraper:
 
 def main():
     parser = argparse.ArgumentParser(description='CLI args')
-    parser.add_argument("-u", required=True, help='Username')
-    parser.add_argument("-p", required=True, help='Password')
+    # parser.add_argument("-u", required=True, help='Username')
+    # parser.add_argument("-p", required=True, help='Password')
     parser.add_argument("-b", type=int, choices=[0,1,2,3,4], default=4,
                         help='Board: 0-2024, 1-2020Mini, 2-2019, 3-2017, 4-2016')
-    parser.add_argument("-d", action='store_false')
+    parser.add_argument("-d", action='store_true')
     parser.add_argument("-o", default="./", help="output path for json and images")
-    parser.add_argument("--from_date", type=str, default="30-01-99", help="Earliest date to extract logs from. dd-mm-yy")
+    parser.add_argument("--from_date", type=str, default="30-01-99", help="Earliest date to extract logs from. %d %b %y")
+    # parser.add_argument("--file_format", default="csv", help="csv or json. default csv.")
+    parser.add_argument("--append_to_csv", default=None, type=str, 
+                        help="path to existing csv to append from lastest date, overrides file_format and from_date.")
+
     args = parser.parse_args()
 
-    scraper = Scraper(args.d, output_path=args.o)
-    data = scraper.fetch_data(args.u, args.p, args.b, args.from_date)
-    data_json = json.dumps(data, indent=4)
+    if os.path.exists(os.path.join(args.o, 'data.csv')):
+        newfile = input("data.csv exists. New filename (blank to overwrite): ")
+        outfile = os.path.join(args.o, f"{newfile if newfile != '' else 'data.csv'}")
 
-    with open(os.path.join(args.o,'data.json'), 'w') as f:
-        f.write(data_json)
+    uname = input("Username:")
+    password = getpass.getpass("Password:")
+
+    try:
+        existing_data = pd.read_csv(args.append_to_csv)
+        last_date = datetime.strptime(existing_data['date'][0], "%d %b %y") 
+        args.from_date = (last_date + timedelta(days=1)).strftime("%d-%m-%y")
+
+        print(f"Existing csv loaded, date found {args.from_date}")
+
+    except:
+        pass
+
+    scraper = Scraper(args.d, output_path=args.o)
+
+    data = scraper.fetch_data(
+        uname, 
+        password, 
+        args.b, 
+        args.from_date, 
+        )
+
+    # if type(data) == dict:
+    #     data_json = json.dumps(data, indent=4)
+
+    #     with open(os.path.join(args.o,'data.json'), 'w') as f:
+    #         f.write(data_json)
+
+    # elif type(data) == pd.DataFrame:
+    data.to_csv(outfile)
+
     print("done")
 
 if __name__ == '__main__':
