@@ -6,8 +6,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 import logging
 import itertools
-
+import bisect
 import os, json, sys, argparse, time, pathlib
+
+from datetime import datetime
+
 
 getGecko_installed = True
 try:
@@ -64,7 +67,7 @@ class Scraper:
             "Dec": 12
         }
 
-    def fetch_data(self, USERNAME: str, PASSWORD: str) -> dict:
+    def fetch_data(self, USERNAME: str, PASSWORD: str, board_number: int, from_date: str = "30-01-99") -> dict:
 
         # use the installed GeckoDriver with Selenium
         fireFoxOptions = webdriver.FirefoxOptions()
@@ -95,7 +98,7 @@ class Scraper:
 
         # select version
         select = Select(driver.find_element(By.ID,"Holdsetup"))
-        select.select_by_index(3)  # 2019 version TODO : more stable
+        select.select_by_index(board_number)  
 
         time.sleep(5)  # TODO: await properly
 
@@ -107,9 +110,9 @@ class Scraper:
         # create list of elements
         res = []
         # TODO: What even..
-        def any_nested(entry_list, entry_text): return any([k == entry_text for k, _, _ in entry_list])
+        def any_nested(entry_list, entry_text): 
+            return any([k == entry_text for k, _, _ in entry_list])
         
-        # 
         
         # Each element is a page that contains up to 40 dates 
         # does not include the first page, currently, selected, element XPATh 'k-state-selected'
@@ -138,13 +141,26 @@ class Scraper:
                 for value, count in zip(date_texts, num_problems_per_date)
             )
             
+            # Count to from_date (if present)
+            from_date_as_dt = datetime.strptime(from_date, "%d-%m-%y")
+            dates_as_dts = [datetime.strptime(d, "%d %b %y") for d in date_texts]
+
+            last_page = False
+
+            if from_date_as_dt > min(dates_as_dts):
+                last_page = True
+                # Must be in ascending order for bisect
+                earliest_entry = len(dates_as_dts) - bisect.bisect_right(dates_as_dts[::-1], from_date_as_dt)
+            
+            else:
+                earliest_entry = len(date_texts)
 
             # get a tag expanders for the various days
             date_expanders = main_section.find_elements(
                 By.XPATH, "//a[@class='k-icon k-i-expand']")
 
             # Click to expand all dates
-            for date_expander, header in zip(date_expanders, headers):
+            for date_expander, header in zip(date_expanders[:earliest_entry], headers[:earliest_entry]):
                 date_expander.click()
                 time.sleep(1)
 
@@ -177,10 +193,14 @@ class Scraper:
                 # else:
                     # pass
             
-            # Navigate to the next page by clicking on the number
-            next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]
-            next_page_clicker.click()
-            time.sleep(5)
+            if last_page:
+                break
+            
+            else:
+                # Navigate to the next page by clicking on the number
+                next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]
+                next_page_clicker.click()
+                time.sleep(5)
                 
         _logger.info(f"Completed scraping {len(res)} entries. Formatting and storing..")
         # process data
@@ -210,14 +230,15 @@ def main():
     parser = argparse.ArgumentParser(description='CLI args')
     parser.add_argument("-u", required=True, help='Username')
     parser.add_argument("-p", required=True, help='Password')
-    parser.add_argument("-b", type=int, choices=[0,1,2,3], default=3,
-                        help='Board: 0-2020Mini, 1-2019, 2-2017, 3-2016')
+    parser.add_argument("-b", type=int, choices=[0,1,2,3,4], default=4,
+                        help='Board: 0-2024, 1-2020Mini, 2-2019, 3-2017, 4-2016')
     parser.add_argument("-d", action='store_false')
     parser.add_argument("-o", default="./", help="output path for json and images")
+    parser.add_argument("--from_date", type=str, default="30-01-99", help="Earliest date to extract logs from. dd-mm-yy")
     args = parser.parse_args()
 
     scraper = Scraper(args.d, output_path=args.o)
-    data = scraper.fetch_data(args.u, args.p)
+    data = scraper.fetch_data(args.u, args.p, args.b, args.from_date)
     data_json = json.dumps(data, indent=4)
 
     with open(os.path.join(args.o,'data.json'), 'w') as f:
