@@ -129,10 +129,10 @@ class Scraper:
 
         _logger.info(f"{len(page_elements) + 1} pages of dates found in logbook..")
 
+        found_date = False
         # Iterate through pages, and then dates
         for i, _ in enumerate(page_elements):
             # Can't directly work with page elements as they go stale
-
             _logger.info(f"Processing page {i+1}")
             # Used to find individual entries
             main_section = driver.find_element(By.ID,"main-section")
@@ -163,6 +163,8 @@ class Scraper:
             
             else:
                 earliest_entry = len(date_texts)
+
+            
 
             # get a tag expanders for the various days
             date_expanders = main_section.find_elements(
