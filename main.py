@@ -10,6 +10,8 @@ import bisect
 import pandas as pd
 import os, json, sys, argparse, time, pathlib
 import getpass
+import logging
+from collections import namedtuple
 
 
 from datetime import datetime, timedelta
@@ -20,7 +22,6 @@ try:
     from get_gecko_driver import GetGeckoDriver
 except BaseException:
     getGecko_installed = False
-
 
 def config_logger(logger: logging.Logger) -> logging.Logger:
     """
@@ -40,35 +41,39 @@ def config_logger(logger: logging.Logger) -> logging.Logger:
 
 _logger = config_logger(logging.getLogger(__name__))
 
+
+ScrapedEntry = namedtuple('Entry', 'date text imagepath')
+
 class Scraper:
 
-    def __init__(self, DEBUG: bool, output_path='./'):
+    def __init__(self, debug: bool, output_image_path):
         self.MB_URL = "https://www.moonboard.com"
-        self.DEBUG = DEBUG
+        self.debug = debug
 
-        self.IMAGE_PATH = os.path.join(output_path,"images")
-        pathlib.Path(self.IMAGE_PATH).mkdir(parents=True, exist_ok=True)
+        self.image_path = output_image_path
+
+        pathlib.Path(self.image_path).mkdir(parents=True, exist_ok=True)
 
         # use getGecko to get the driver
         if getGecko_installed:
-            print("Getting GeckoDriver")
+            _logger.info("Getting GeckoDriver")
             get_driver = GetGeckoDriver()
             get_driver.install()
 
-        self.MONTH_MAP = {
-            "Jan": 1,
-            "Feb": 2,
-            "Mar": 3,
-            "Apr": 4,
-            "May": 5,
-            "Jun": 6,
-            "Jul": 7,
-            "Aug": 8,
-            "Sep": 9,
-            "Oct": 10,
-            "Nov": 11,
-            "Dec": 12
-        }
+        # self.MONTH_MAP = {
+        #     "Jan": 1,
+        #     "Feb": 2,
+        #     "Mar": 3,
+        #     "Apr": 4,
+        #     "May": 5,
+        #     "Jun": 6,
+        #     "Jul": 7,
+        #     "Aug": 8,
+        #     "Sep": 9,
+        #     "Oct": 10,
+        #     "Nov": 11,
+        #     "Dec": 12
+        # }
 
     def fetch_data(
             self, 
@@ -80,10 +85,18 @@ class Scraper:
 
         # use the installed GeckoDriver with Selenium
         fireFoxOptions = webdriver.FirefoxOptions()
-        fireFoxOptions.headless = not self.DEBUG
+        # fireFoxOptions.headless = not self.debug
+        if not self.debug:
+            _logger.info("Running in headless mode.")
+            fireFoxOptions.add_argument("-headless")
+
+        _logger.info(f"Fetching web data. Allow some minutes.")
+
         driver = webdriver.Firefox(options=fireFoxOptions)
 
         driver.get(self.MB_URL)
+
+
 
         # login
         driver.find_element(By.ID, "loginDropdown").click()
@@ -117,21 +130,22 @@ class Scraper:
         time.sleep(3)
 
         # create list of elements
-        res = []
-        # TODO: What even..
-        def any_nested(entry_list, entry_text): 
-            return any([k == entry_text for k, _, _ in entry_list])
+        scraped_entries = []
+
+        # # TODO: What even..
+        # def any_nested(entry_list, entry_text): 
+        #     return any([k == entry_text for k, _, _ in entry_list])
         
         
         # Each element is a page that contains up to 40 dates 
         # does not include the first page, currently, selected, element XPATh 'k-state-selected'
         page_elements = driver.find_elements(By.XPATH,"//a[@class='k-link']")
 
-        _logger.info(f"{len(page_elements) + 1} pages of dates found in logbook..")
+        _logger.info(f"{len(page_elements) + 1} pages found in logbook..")
 
-        found_date = False
+        # found_date = False
         # Iterate through pages, and then dates
-        for i, _ in enumerate(page_elements):
+        for i in range(len(page_elements) + 1):
             # Can't directly work with page elements as they go stale
             _logger.info(f"Processing page {i+1}")
             # Used to find individual entries
@@ -160,6 +174,7 @@ class Scraper:
                 last_page = True
                 # Must be in ascending order for bisect
                 earliest_entry = len(dates_as_dts) - bisect.bisect_right(dates_as_dts[::-1], from_date_as_dt)
+                _logger.info(f"Earliest date ({from_date}) reached on page {i+1} after {earliest_entry} entries.")
             
             else:
                 earliest_entry = len(date_texts)
@@ -171,50 +186,44 @@ class Scraper:
                 By.XPATH, "//a[@class='k-icon k-i-expand']")
 
             # Click to expand all dates
-            for date_expander, header in zip(date_expanders[:earliest_entry], headers[:earliest_entry]):
+            # for date_expander, header in zip(date_expanders[:earliest_entry], headers[:earliest_entry]):
+            for date_expander in date_expanders[:earliest_entry]:
                 date_expander.click()
                 time.sleep(1)
 
-            # SHould contain all entries for the entire page
+            # Should contain all entries for the entire page
             entries = main_section.find_elements(By.CLASS_NAME, "entry")
-            entry_names = [e.text.split('\n')[0] for e in entries]
 
-            # Logbook error has dupes (doubles) of entries in consecutive slots
-
-            # TODO: Better way to do this.. But the ids arent duped.. just text
-            # unique_entries = [(entries[i],entry_text[i]) for i in range(1, len(entries)) 
-            #                     if i==1 or (entry_text[i] != entry_text[i-1])]
+            # TODO: Entries are _always_ (?) duplicated, unknown reason. Quick fix. 
             entries = entries[::2]
 
-            print(f"Page {i + 1} - #Entries: {len(entries)} ")
+            _logger.info(f"{len(entries)} entries found (page {i + 1}). Scraping..")
+
             # Entries has been sliced to the from_date
             for (entry, entry_date) in zip(entries, repeated_date_list):
                 entry_name = entry.text.split('\n')[0]
-                img_path = os.path.join(self.IMAGE_PATH, entry_name.replace(" ","_")+".png")
+                img_path = os.path.join(self.image_path, entry_name.replace(" ","_")+".png")
                 if not os.path.isfile(img_path):
                     # Get screenshot only if the file doesn't exist
-                    # TODO: Update when using rdbms
                     entry.click()
                     time.sleep(1)
                     driver.get_screenshot_as_file(img_path)       
                 
                 # get data
-                # if not any_nested(res, entry.text):
-                res_entry = (entry.text, entry_date, img_path)  # (route info, date)
-                res.append(res_entry)
-                # else:
-                    # pass
+                scraped_entry = ScrapedEntry(entry_date, entry.text, img_path)  
+                scraped_entries.append(scraped_entry)
             
             if last_page:
                 break
             
             else:
                 # Navigate to the next page by clicking on the number
-                next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[0]
+                # Clicker id is always the last in the list (for progressing to next page.)
+                next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[-1]
                 next_page_clicker.click()
                 time.sleep(5)
                 
-        _logger.info(f"Completed scraping {len(res)} entries. Formatting and storing..")
+        _logger.info(f"Completed scraping {len(scraped_entries)} entries.")
         # process data
         # if return_format == 'json':
         #     formatted_data = []
@@ -234,38 +243,38 @@ class Scraper:
 
         #         formatted_data.append(formatted)
         # else:
-        return pd.DataFrame(([r[1],r[0],r[2]] for r in res), columns=['date', 'text', 'img_path'])
-
-        # cleanup
+        df = pd.DataFrame(([e.date, e.text, e.imagepath] for e in scraped_entries), 
+                          columns=['date', 'text', 'img_path'])
         driver.quit()
-
-        return formatted_data
+        return df
 
 
 def main():
-    parser = argparse.ArgumentParser(description='CLI args')
-    # parser.add_argument("-u", required=True, help='Username')
-    # parser.add_argument("-p", required=True, help='Password')
+    parser = argparse.ArgumentParser(description="CLI args")
     parser.add_argument("-b", type=int, choices=[0,1,2,3,4], default=4,
                         help='Board: 0-2024, 1-2020Mini, 2-2019, 3-2017, 4-2016')
-    parser.add_argument("-d", action='store_true')
-    parser.add_argument("-o", default="./", help="output path for json and images")
-    parser.add_argument("--from_date", type=str, default="30-01-99", help="Earliest date to extract logs from. %d %b %y")
-    # parser.add_argument("--file_format", default="csv", help="csv or json. default csv.")
-    parser.add_argument("--append_to_csv", default=None, type=str, 
+    parser.add_argument("-d", "--debug", action="store_true")
+    parser.add_argument("-o", "--output-to", default="./data.csv", help="output path for json and images")
+    parser.add_argument("--output-images-to", default="./images", help="path to save images.")
+    parser.add_argument("--from-date", type=str, default="30-01-99", help="Earliest date to extract logs from. %d %b %y")
+    parser.add_argument("--append-to-existing", default=None, type=str, 
                         help="path to existing csv to append from lastest date, overrides file_format and from_date.")
 
     args = parser.parse_args()
 
-    if os.path.exists(os.path.join(args.o, 'data.csv')):
-        newfile = input("data.csv exists. New filename (blank to overwrite): ")
-        outfile = os.path.join(args.o, f"{newfile if newfile != '' else 'data.csv'}")
+
+    outfile = args.output_to
+
+    if os.path.exists(args.output_to):
+        newfile = input(f"{args.output_to} exists. New path and filename (blank to overwrite): ")
+        outfile = newfile if newfile != '' else args.output_to
+        # os.path.join(args.o, f"{newfile if newfile != '' else 'data.csv'}")
 
     uname = input("Username:")
     password = getpass.getpass("Password:")
 
     try:
-        existing_data = pd.read_csv(args.append_to_csv)
+        existing_data = pd.read_csv(args.append_to_existing)
         last_date = datetime.strptime(existing_data['date'][0], "%d %b %y") 
         args.from_date = (last_date + timedelta(days=1)).strftime("%d-%m-%y")
 
@@ -274,7 +283,7 @@ def main():
     except:
         pass
 
-    scraper = Scraper(args.d, output_path=args.o)
+    scraper = Scraper(debug=args.debug, output_image_path=args.output_images_to)
 
     data = scraper.fetch_data(
         uname, 
@@ -283,16 +292,16 @@ def main():
         args.from_date, 
         )
 
-    # if type(data) == dict:
-    #     data_json = json.dumps(data, indent=4)
+    try:
+        data = pd.concat([data, existing_data], axis=0)
+    except:
+        pass
 
-    #     with open(os.path.join(args.o,'data.json'), 'w') as f:
-    #         f.write(data_json)
+    _logger.info(f"Writing to {outfile}")
 
-    # elif type(data) == pd.DataFrame:
-    data.to_csv(outfile)
+    data.to_csv(outfile, index=False)
 
-    print("done")
+    _logger.info(f"Done.")
 
 if __name__ == '__main__':
     sys.exit(main())
