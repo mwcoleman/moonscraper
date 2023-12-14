@@ -18,8 +18,11 @@ from datetime import datetime, timedelta
 
 
 getGecko_installed = True
+
 try:
     from get_gecko_driver import GetGeckoDriver
+
+
 except BaseException:
     getGecko_installed = False
 
@@ -54,11 +57,11 @@ class Scraper:
 
         pathlib.Path(self.image_path).mkdir(parents=True, exist_ok=True)
 
-        # use getGecko to get the driver
-        if getGecko_installed:
-            _logger.info("Getting GeckoDriver")
-            get_driver = GetGeckoDriver()
-            get_driver.install()
+        # # use getGecko to get the driver
+        # if getGecko_installed:
+        #     _logger.info("Getting GeckoDriver")
+        #     get_driver = GetGeckoDriver()
+        #     get_driver.install()
 
         # self.MONTH_MAP = {
         #     "Jan": 1,

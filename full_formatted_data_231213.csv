@@ -1,0 +1,492 @@
+date,name,grade,setter,mygrade,attempts,ticked,comment,grade_v,mygrade_v
+2023-12-14,POPIFRESCO,6B+,JAVIERMENG,6B+,2,False,,4.0,4.0
+2023-12-14,THE SENDTRAIN,6C,Ben Rankin,6C,2,True,,5.0,5.0
+2023-12-14,BORNEO,7A,Stuart Ivory,6C+,1,True,,6.0,5.5
+2023-12-14,BUTOLOGIA,6C,nicholas farenzena,6C,1,True,,5.0,5.0
+2023-12-14,FINGER LICKIN EASY,6B+,Kyle Knapp,6C,1,True,,4.0,5.0
+2023-12-12,¡APUNT****!,6B+,AJ Rimes,6B+,1,True,,4.0,4.0
+2023-12-12,FINGER LICKIN EASY,6B+,Kyle Knapp,6C,3,False,,4.0,5.0
+2023-12-12,FEET CUTTING VAR,7A,Bobby Shih,7A,3,False,,6.0,6.0
+2023-12-12,BORNEO,7A,Stuart Ivory,6C+,6,True,,6.0,5.5
+2023-12-12,DES GROS CUTLOOSE PAS RAP,6C,Jean-claude Savard,6C,1,False,,5.0,5.0
+2023-12-07,TCA COMP 1,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2023-12-07,AB1,6B+,adrien baudouin,6B+,1,True,,4.0,4.0
+2023-12-07,RYAN TEST 1,6B+,Jen,6B+,1,True,,4.0,4.0
+2023-12-07,DES GROS CUTLOOSE PAS RAP,6C,Jean-claude Savard,6C+,3,False,,5.0,5.5
+2023-12-07,UH-HUH,7A,Alex Arroyo,6C+,3,False,,6.0,5.5
+2023-12-07,B.O.B.,7A,Randall Baum,7A,3,False,,6.0,6.0
+2023-12-05,CATCH'M,6B+,Melissa Clements,6B+,1,True,,4.0,4.0
+2023-12-05,USE THOSE FEET,6B+,Eddie,6B+,2,True,,4.0,4.0
+2023-12-05,AB3,6B+,adrien baudouin,6B+,1,True,,4.0,4.0
+2023-12-05,REPEATER,6B+,Kyle Knapp,6B+,2,True,,4.0,4.0
+2023-12-05,SALTEDBLOCKS 2,6C,Martin Blizi,6C+,2,True,,5.0,5.5
+2023-12-05,DOUBLE CROSS,6C,Kyle Knapp,6C+,3,True,matched 8. crossed last move to make up the double..,5.0,5.5
+2023-12-05,MAFFEI,6C,Riccardo Caprasecca,6C+,3,False,,5.0,5.5
+2023-12-02,S.U.N,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2023-12-02,SOPHIE'S QUESTIONS (V3),6B+,Chris Wall,6B+,1,True,,4.0,4.0
+2023-12-02,MAN WALKS DOWN THE STREET,6B+,mattw,6B+,1,True,,4.0,4.0
+2023-12-02,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2023-12-02,WAITING FOR HARDTIMES,6C,James Lucas,6C,3,False,,5.0,5.0
+2023-12-02,SALTEDBLOCKS 2,6C,Martin Blizi,6C,2,False,,5.0,5.0
+2023-12-02,MAFFEI,6C,Riccardo Caprasecca,6C+,2,False,,5.0,5.5
+2023-12-02,ATAUALPA,6C,Ale Alekos,6B+,1,True,,5.0,4.0
+2023-12-02,ATAUALPA,6C,Ale Alekos,6B+,1,True,,5.0,4.0
+2023-12-02,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2023-12-02,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2023-11-30,OUCH,6B+,Eric Nguyen,6B+,1,True,,4.0,4.0
+2023-11-30,EAT THY CAKE,6B+,Ravioli Biceps,6B+,2,True,fun,4.0,4.0
+2023-11-30,AB5,6B+,adrien baudouin,6B+,1,True,,4.0,4.0
+2023-11-30,BASTION,6C,Kilgour22,6C,2,True,,5.0,5.0
+2023-11-30,DOUBLE CROSS,6C,Kyle Knapp,6C,2,False,,5.0,5.0
+2023-11-30,MAFFEI,6C,Riccardo Caprasecca,6C+,2,False,,5.0,5.5
+2023-11-28,WARMING UP,6B+,Chad Jensen,6B+,1,True,,4.0,4.0
+2023-11-28,1K,6B+,Bryant Noble,6B+,1,True,,4.0,4.0
+2023-11-28,GORILLA BEGINS(6A/V3),6B+,Jay Choi,6B+,1,True,,4.0,4.0
+2023-11-28,LOW CARB VAR,6C,Ben Moon,6C,5,False,,5.0,5.0
+2023-11-28,SALTEDBLOCKS 2,6C,Martin Blizi,6C,4,False,,5.0,5.0
+2023-11-26,UP AND OVER,6B+,Alex Smurthwaite,6B+,1,True,,4.0,4.0
+2023-11-26,FIRST STEP,6B+,Riccardo Caprasecca,6B+,1,True,,4.0,4.0
+2023-11-26,1,6B+,Hugo Hoyer,6B+,1,True,,4.0,4.0
+2023-11-26,SURESHOT,6C,Danny Hupp,6C,3,False,,5.0,5.0
+2023-11-26,WAITING FOR HARDTIMES,6C,James Lucas,6C,2,False,,5.0,5.0
+2023-11-23,EASY-PEASY LEMON SQUEEZY,6B+,Movement Crew,6B+,1,True,,4.0,4.0
+2023-11-23,JUST ANOTHER DAY,6C,Reuben Mardan,6C,2,True,,5.0,5.0
+2023-11-23,ARIGGARI,6C,KoalaClimbing,6C,3,True,matched,5.0,5.0
+2023-11-23,BANANARAMA,6C,Blake Lehmans,6B+,1,True,,5.0,4.0
+2023-11-23,ACG30,6C,bkkim,6C,2,True,,5.0,5.0
+2023-11-21,FAR FROM THE MADDING CROWD,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2023-11-21,AL A GAIT OR?,6B+,mattw,6B+,1,True,,4.0,4.0
+2023-11-21,BUTOLOGIA,6C,nicholas farenzena,6C,3,True,,5.0,5.0
+2023-11-21,ASTRO CREEP,6B+,Jonny Summers,6B+,30,True,,4.0,4.0
+2023-11-16,7STÖCKE,6B+,gert Lerchster,6B+,1,True,,4.0,4.0
+2023-11-16,BURNING SENDERS,6B+,alvaro rangel,6B+,2,False,,4.0,4.0
+2023-11-16,ASTRO CREEP,6B+,Jonny Summers,6B+,2,False,,4.0,4.0
+2023-11-16,WHAAAAT,6C,Michael Montella,6B+,1,True,,5.0,4.0
+2023-11-16,HOLD THE SWING,6C,Duncan Brown,6C,1,True,,5.0,5.0
+2023-11-16,LOW CARB VAR,6C,Ben Moon,6C,2,False,,5.0,5.0
+2023-11-16,BUTOLOGIA,6C,nicholas farenzena,6C,3,False,,5.0,5.0
+2023-11-14,AMPHORA,6B+,Riccardo Caprasecca,6B+,3,True,,4.0,4.0
+2023-11-14,SEND TRAIN,6B+,Kyle Knapp,6B+,2,True,,4.0,4.0
+2023-11-14,SWITCHEROO,6C,Alfred Wold Oftebro,6C,3,True,,5.0,5.0
+2023-11-14,FLOAT LIKE A BUTTERFLY,6C,Kyle Knapp,6C,3,False,,5.0,5.0
+2023-11-09,MOONING,6C,levi jackson,6C,2,False,,5.0,5.0
+2023-11-09,ATAUALPA,6C,Ale Alekos,6C,1,True,,5.0,5.0
+2023-11-09,JUST ANOTHER DAY,6C,Reuben Mardan,6C,2,True,,5.0,5.0
+2023-11-09,ATTILALALA,6C,Simon Sjöstrand,6C,2,False,,5.0,5.0
+2023-10-21,WARM UP 1031,6B+,lyndsey,6B+,1,True,,4.0,4.0
+2023-10-21,IN MY APPROACH SHOES...,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2023-10-17,DIVESTMENT PLAN,6B+,will winham,6B+,2,True,,4.0,4.0
+2023-10-17,YOU GET A CAR,6B+,Mfi,6B+,1,True,,4.0,4.0
+2023-10-17,CIAO BAMBINO,6B+,Krzysztof Lewko,6B+,3,True,,4.0,4.0
+2023-10-17,SOLIDARITY,6B+,Kilgour22,6B+,2,True,,4.0,4.0
+2023-10-17,I'M NOT A SETTER,6B+,Emilee Sudweeks,6B+,1,False,,4.0,4.0
+2023-10-17,FORSØK 25,6B+,atoneni,6B+,1,True,,4.0,4.0
+2023-10-17,EASY DOES IT,6B+,Reuben Mardan,6B+,2,False,,4.0,4.0
+2023-10-14,MOONING,6C,levi jackson,6C,3,False,,5.0,5.0
+2023-10-10,LE UOVA SODE,6C,Ale Alekos,6C,2,True,,5.0,5.0
+2023-10-10,ELANOMOUS,6C,Andrew Smythe,6C,3,True,,5.0,5.0
+2023-10-10,SLAB TRAINING,6C,erik massih,6C,3,True,,5.0,5.0
+2023-10-07,QUARANTINE #4,6B+,Erin Daniel,6B+,3,True,,4.0,4.0
+2023-10-07,TRAINING WHEEL,6B+,Andrew,6B+,2,False,,4.0,4.0
+2023-10-07,HATHA YOGA,6B+,janezkranjski,6B+,2,False,,4.0,4.0
+2023-10-07,ATAUALPA,6C,Ale Alekos,6C,1,True,,5.0,5.0
+2023-10-03,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2023-10-03,TE GUSTA?,6B+,Paul Robinson,6B+,1,True,,4.0,4.0
+2023-10-03,THE SPLATTER EFFECT,6B+,Ian Cavanaugh,6B+,1,True,,4.0,4.0
+2023-10-03,FORSØK 17,6B+,atoneni,6B+,1,True,,4.0,4.0
+2023-10-03,EASY DOES IT,6B+,Reuben Mardan,6B+,2,False,,4.0,4.0
+2023-09-28,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2023-09-28,STANDARD AND POOR'S,6B+,Vincent Minecci,6B+,2,True,,4.0,4.0
+2023-09-28,I'M NOT A SETTER,6B+,Emilee Sudweeks,6B+,2,False,,4.0,4.0
+2023-09-28,RISCALDAMENTO TIA 6A,6B+,Federico Camboni,6B+,2,True,,4.0,4.0
+2023-09-28,TBA WARMUP 1,6B+,Luis Rodriguez,6B+,1,False,,4.0,4.0
+2023-09-28,FORSØK 25,6B+,atoneni,6B+,2,False,,4.0,4.0
+2023-09-26,V4 FLASH,6B+,Tom Mavrovic,6B+,1,True,,4.0,4.0
+2023-09-26,BZ - MYSTIC RHYTHMS,6B+,Thomas Watts,6B+,2,True,,4.0,4.0
+2023-09-26,ATTIC V - 2,6B+,Jo,6B+,1,True,,4.0,4.0
+2023-09-26,IN MY APPROACH SHOES...,6B+,Kyle Knapp,6B+,2,False,,4.0,4.0
+2023-09-26,DISPENSORY,6B+,Luis Rodriguez,6B+,2,True,,4.0,4.0
+2023-09-26,CHOSSY MESS,6B+,orion feist,6B+,1,True,,4.0,4.0
+2023-09-22,QUARANTINE #4,6B+,Erin Daniel,6B+,1,True,,4.0,4.0
+2023-09-22,DIVESTMENT PLAN,6B+,will winham,6B+,1,True,,4.0,4.0
+2023-09-22,SOLIDARITY,6B+,Kilgour22,6B+,1,False,,4.0,4.0
+2023-09-22,V4 FLASH,6B+,Tom Mavrovic,6B+,1,True,,4.0,4.0
+2023-09-22,BZ - MYSTIC RHYTHMS,6B+,Thomas Watts,6B+,1,False,,4.0,4.0
+2023-09-22,YOU GET A CAR,6B+,Mfi,6B+,1,True,,4.0,4.0
+2023-09-22,WARM UP 1031,6B+,lyndsey,6B+,2,False,,4.0,4.0
+2023-09-22,EASY-PEASY LEMON SQUEEZY,6B+,Movement Crew,6B+,1,True,,4.0,4.0
+2023-09-22,MAGGIE’S PROBLEM,6B+,Taylor Kosman,6B+,1,True,,4.0,4.0
+2023-07-18,SAR&MAR-BEAR CLIMB,6B+,Beaves,6B+,1,True,,4.0,4.0
+2023-07-18,PROJECT PAR PAR,6B+,Colin Mcnally,6B+,1,True,,4.0,4.0
+2023-07-18,ONE SUMMER EASY,6C+,Ben Moon,6C+,3,False,,5.5,5.5
+2023-07-18,DANIELSAN,6C+,Jack Folkes,6C+,3,False,,5.5,5.5
+2023-07-13,POGO,7A,luke hutcheson,7A,2,True,,6.0,6.0
+2023-07-02,LORD REIDUN,6B+,Chad Jensen,6B+,1,True,,4.0,4.0
+2023-07-02,BACK THREE-SOME: 3EA HAND,6B+,Will Crowther,6B+,1,True,,4.0,4.0
+2023-07-02,AMBERJACK,6B+,Bryant Noble,6B+,1,True,,4.0,4.0
+2023-06-20,JUST ANOTHER DAY,6C,Reuben Mardan,6C,1,True,,5.0,5.0
+2023-06-20,ATAUALPA,6C,Ale Alekos,6C,1,True,,5.0,5.0
+2023-06-20,LE UOVA SODE,6C,Ale Alekos,6C,1,True,,5.0,5.0
+2023-06-20,"RIGHTNESS, PT.3",6C+,Alex Arroyo,6C,3,True,,5.5,5.0
+2023-06-20,DANIELSAN,6C+,Jack Folkes,6C+,3,False,,5.5,5.5
+2023-06-17,POGO,7A,luke hutcheson,7A,3,False,,6.0,6.0
+2023-06-17,POGO,7A,luke hutcheson,7A,5,True,,6.0,6.0
+2023-06-17,KEMAL'S VAR,7A,Garry Williams,7A,3,False,,6.0,6.0
+2023-06-15,TOODLE,6B+,RAMRAM,6B+,3,False,,4.0,4.0
+2023-06-15,GRAB THE D,6C,Martin Heald,6C,3,False,,5.0,5.0
+2023-06-15,HAVE FUN 3P0,6B+,lifeframed_jw,6B+,2,True,,4.0,4.0
+2023-06-13,SLOWLY,6B,redflavor,6B+,1,True,,3.0,4.0
+2023-06-13,WARMUP FOOT CUT,6B,RJtrials,6B+,1,True,,3.0,4.0
+2023-06-13,WARM UP FINGAS VERSION 2,6B+,Micur,6B+,1,True,,4.0,4.0
+2023-06-13,GRAB THE D,6C,Martin Heald,6C,3,False,,5.0,5.0
+2023-06-13,1817,6C,Randall Baum,6C,3,False,,5.0,5.0
+2023-06-13,HORSESHOE,6C,Ravioli Biceps,6C,2,False,,5.0,5.0
+2023-06-07,LINKSVERSIFFTE SCH,6B+,Furie,6B+,1,True,,4.0,4.0
+2023-06-01,DRAWING BOARD,6B+,Kyle Knapp,6B+,2,True,,4.0,4.0
+2023-06-01,UH-HUH WRONG,6B+,danhult,6B+,2,False,,4.0,4.0
+2023-06-01,YOURS,6C,Felicity Holt,6C,2,True,,5.0,5.0
+2023-06-01,ELANOMOUS,6C,Andrew Smythe,6C,2,False,,5.0,5.0
+2023-05-30,272966,6B+,Mystery Frog Man,6B+,1,True,,4.0,4.0
+2023-05-30,(*)(*)FAKE,6B+,Mystery Frog Man,6B+,1,True,,4.0,4.0
+2023-05-30,KEMAL'S VAR,7A,Garry Williams,7A,3,False,,6.0,6.0
+2023-05-30,POGO,7A,luke hutcheson,7A,3,False,,6.0,6.0
+2023-05-27,MOONING,6C,levi jackson,6C,3,False,,5.0,5.0
+2023-05-27,REMO,6B+,Riccardo Caprasecca,6B+,2,False,,4.0,4.0
+2023-05-27,MOONWARS MILLENNIUMFALCON,6C,Stefano Ghisolfi,6C,3,True,,5.0,5.0
+2023-05-20,EASY DOES IT,6B+,Reuben Mardan,6B+,3,False,,4.0,4.0
+2023-05-20,CIAO BAMBINO,6B+,Krzysztof Lewko,6B+,2,True,,4.0,4.0
+2023-05-18,TBA WARMUP 1,6B+,Luis Rodriguez,6B+,2,True,,4.0,4.0
+2023-05-18,DR. PINCH,6B+,Alex Distefano,6B+,1,True,,4.0,4.0
+2023-05-09,APOLOTE BITE,6B+,lairadelasrocas,6B+,1,True,,4.0,4.0
+2023-05-09,UH-HUH WRONG,6B+,danhult,6B+,3,False,,4.0,4.0
+2023-05-07,TRAINING WHEEL,6B+,Andrew,6B+,1,True,,4.0,4.0
+2023-05-07,IUGIN,6B+,Alex Zonato,6B+,2,True,,4.0,4.0
+2023-05-07,COSMIC EASY,6B+,Mike Shewring,6B+,1,True,,4.0,4.0
+2023-05-07,MIKE AND THE GIRLS,6B+,9 degrees,6B+,2,True,,4.0,4.0
+2023-05-07,POPIFRESCO,6B+,JAVIERMENG,6B+,2,True,,4.0,4.0
+2023-05-07,PENGUIN’S DANCE,6B+,Vince Phong,6B+,1,True,,4.0,4.0
+2023-05-07,BUILD A BEAR,6B+,Keithy,6B+,1,True,,4.0,4.0
+2023-05-07,ONE UPPER,6B+,Brendan Leader,6B+,2,True,,4.0,4.0
+2023-05-06,CRUISER,6B+,Kilgour22,6B+,1,True,,4.0,4.0
+2023-05-06,ENTRY EXAM,6B+,Jstar,6B+,4,True,,4.0,4.0
+2023-05-06,SISÚ,6C,edu moya,6C,3,True,,5.0,5.0
+2023-04-18,GRIFETE HANDS,6C,edu moya,6C,3,False,,5.0,5.0
+2023-04-18,SISÚ,6C,edu moya,6C,3,False,,5.0,5.0
+2023-04-18,THE OLD MAN AND THE BOARD,6C,Christopher Pattberg,6C+,3,True,,5.0,5.5
+2023-04-18,THE SENDTRAIN,6C,Ben Rankin,6C,3,True,,5.0,5.0
+2023-04-18,POWPOW,6B+,Riccardo Caprasecca,6B+,2,True,,4.0,4.0
+2023-04-06,FOR LOIS,6B+,michl24_7,6B+,1,True,,4.0,4.0
+2023-04-06,PINCHEEZY,6B+,FiddlerOnTheGreen,6B+,1,True,,4.0,4.0
+2023-04-06,HOOK IT,6C,Christian Klaassen,6C,3,True,,5.0,5.0
+2023-04-06,WRECKONIZE,6C,Pawel Paraskiewas,6C,4,False,,5.0,5.0
+2023-04-06,THE OLD MAN AND THE BOARD,6C,Christopher Pattberg,6C,2,False,,5.0,5.0
+2023-04-04,WIFE'S RATH,6B+,Ben Oveson,6B+,1,True,,4.0,4.0
+2023-04-04,BLUEFISH,6B+,Bryant Noble,6B+,1,True,,4.0,4.0
+2023-04-04,BOTTOM LINE,6C,Ravioli Biceps,6C,2,True,,5.0,5.0
+2023-04-04,HORSESHOE,6C,Ravioli Biceps,6C,3,False,,5.0,5.0
+2023-04-04,HOOK IT,6C,Christian Klaassen,6C,3,False,,5.0,5.0
+2023-03-28,NUT,6B+,Chad Jensen,6B+,1,True,,4.0,4.0
+2023-03-28,MOONING,6C,levi jackson,6C,3,False,,5.0,5.0
+2023-03-28,SLAB TRAINING,6C,erik massih,6C,3,False,,5.0,5.0
+2023-03-23,BZ - HYPERION,6C,Thomas Watts,6C,3,True,,5.0,5.0
+2023-03-23,POGO,7A,luke hutcheson,7A,3,False,,6.0,6.0
+2023-03-16,SLIGHTLY SKEWED,6C,Lucas Murray,6C,3,True,,5.0,5.0
+2023-03-16,B.O.B. 2,6C,Randall Baum,6C,3,False,,5.0,5.0
+2023-03-16,SISÚ,6C,edu moya,6C,2,False,,5.0,5.0
+2023-03-15,TWOFISH,6B+,Bryant Noble,6B+,1,True,,4.0,4.0
+2023-03-15,KLINGON,6B+,Chad Jensen,6B+,1,True,,4.0,4.0
+2023-03-15,FOUNDRY COMP HARD 2,6C,haydn jones,6C,2,True,,5.0,5.0
+2023-03-07,FUN AS HECK,6B+,Will,6B+,1,True,,4.0,4.0
+2023-03-07,2,6B+,Hugo Hoyer,6B+,1,True,,4.0,4.0
+2023-03-07,EZ,6B+,BlakeMeACake,6B+,1,True,,4.0,4.0
+2023-03-07,ASTRO CREEP,6B+,Jonny Summers,6B+,3,False,,4.0,4.0
+2023-03-07,L'HO DURO DURO,7A+,Max Car,7A+,3,False,,7.0,7.0
+2023-03-05,TIC-TAC-TOES,6B+,Twitt,6B+,2,True,,4.0,4.0
+2023-03-05,YOURS,6C,Felicity Holt,6C,2,False,,5.0,5.0
+2023-03-05,COMME NEIGE AU SOLEIL,6C,Michael Lauer,6B+,1,True,,5.0,4.0
+2023-03-05,BZ - HYPERION,6C,Thomas Watts,6C,3,False,,5.0,5.0
+2023-03-05,MOONING,6C,levi jackson,6C,3,False,,5.0,5.0
+2023-03-02,WARM UP NO. 10,6B+,Luis Rodriguez,6C+,1,True,,4.0,5.5
+2023-03-02,EASY DOES IT,6B+,Reuben Mardan,6B+,2,False,,4.0,4.0
+2023-03-02,ACG6 WAS TOO HARD,6C,Brian Kim,6B+,1,True,,5.0,4.0
+2023-03-02,SOURKRAWT,6C,Kyle Knapp,6C,2,True,,5.0,5.0
+2023-03-02,SISÚ,6C,edu moya,6C,2,False,,5.0,5.0
+2023-02-28,WARM UP NO. 10,6B+,Luis Rodriguez,6B+,2,False,,4.0,4.0
+2023-02-28,ENTER SANDBAG,6C+,Christian Thorjussen,6C+,2,False,,5.5,5.5
+2023-02-26,WARM UP NO. 10,6B+,Luis Rodriguez,6B+,3,False,,4.0,4.0
+2023-02-26,RAINY DAY,6B+,Chris Tibbals,6C,4,True,,4.0,5.0
+2023-02-26,HUGO ELIMINATE CLEAN,6B+,David Quinn,6C,2,True,,4.0,5.0
+2023-02-26,RAINY DAY,6B+,Chris Tibbals,6B+,3,True,,4.0,4.0
+2023-02-26,MOON CASTLE,6C,Ben Moon,6C,3,True,,5.0,5.0
+2023-02-26,YOURS,6C,Felicity Holt,6C,1,False,,5.0,5.0
+2023-02-23,SOLIDARITY,6B+,Kilgour22,6B+,1,True,,4.0,4.0
+2023-02-23,NIMBUS,6B+,Larissa Kruhs,6B+,1,True,,4.0,4.0
+2023-02-23,CHOSSY MESS,6B+,orion feist,6B+,1,True,,4.0,4.0
+2023-02-23,NO FOOT,6B+,simone antuzzi,6B+,3,True,,4.0,4.0
+2023-02-23,RAINY DAY,6B+,Chris Tibbals,6B+,3,False,,4.0,4.0
+2023-02-21,EVERT DAY,6B+,Nanna Söderin,6B+,1,True,,4.0,4.0
+2023-02-21,PIECE OF CAKE FOR YAYA,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2023-02-21,GRAVITY'S RAINBOW,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2023-02-21,HUGO ELIMINATE CLEAN,6B+,David Quinn,6B+,2,False,,4.0,4.0
+2023-02-21,NORTHSIDE,7A,Matt Mcnair,6C+,2,True,,6.0,5.5
+2023-02-21,ENTER SANDBAG,6C+,Christian Thorjussen,6C+,1,False,,5.5,5.5
+2023-02-16,RAINY DAY,6B+,Chris Tibbals,6B+,2,False,,4.0,4.0
+2023-02-16,WARM UP NO. 10,6B+,Luis Rodriguez,6B+,1,False,,4.0,4.0
+2023-02-16,課題2,6C+,atsushi takizawa,6B+,3,True,,5.5,4.0
+2023-02-16,UP!!!,6B+,Branko,6B+,1,True,,4.0,4.0
+2023-02-16,BZ - MYSTIC RHYTHMS,6B+,Thomas Watts,6B+,3,True,,4.0,4.0
+2023-02-16,CONFIDENCE BOOST,6B+,Henrik Berg,6B+,2,True,,4.0,4.0
+2023-02-16,HATHA YOGA,6B+,janezkranjski,6B+,2,False,,4.0,4.0
+2023-02-14,DISPENSORY,6B+,Luis Rodriguez,6B+,2,True,,4.0,4.0
+2023-02-14,HUGO ELIMINATE CLEAN,6B+,David Quinn,6B+,3,False,,4.0,4.0
+2023-02-14,I'M NOT A SETTER,6B+,Emilee Sudweeks,6B+,1,True,,4.0,4.0
+2023-02-14,SHOULD OF STAYED AT HOME,7A,Jonty,6C,2,True,,6.0,5.0
+2023-02-11,EASY DOES IT,6B+,Reuben Mardan,6B+,3,False,,4.0,4.0
+2023-02-11,EASY DOES IT,6B+,Reuben Mardan,6B+,3,False,,4.0,4.0
+2023-02-09,SOLIDARITY,6B+,Kilgour22,6B+,1,True,,4.0,4.0
+2023-02-09,I'M NOT A SETTER,6B+,Emilee Sudweeks,6B+,3,False,,4.0,4.0
+2023-02-09,TBA WARMUP 1,6B+,Luis Rodriguez,6B+,1,False,,4.0,4.0
+2023-02-09,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2023-02-09,SOURKRAWT,6C,Kyle Knapp,6C,2,False,,5.0,5.0
+2023-02-07,TIPI DA SALETTA,6B+,Averau,6B+,1,True,,4.0,4.0
+2023-02-07,SQUINCHER,6B+,George Evans,6B+,1,True,,4.0,4.0
+2023-02-07,LA PRESA DI COSTANTINOPOL,6B+,simone antuzzi,6B+,4,True,,4.0,4.0
+2023-02-07,BRZÓZON 2,6B+,Ania Orlowska,6B+,2,True,,4.0,4.0
+2023-02-07,STANDING ROCK,6B+,Kyle Knapp,6B+,2,True,,4.0,4.0
+2023-02-02,REMO,6B+,Riccardo Caprasecca,6B+,2,False,,4.0,4.0
+2023-02-02,SX,6B+,Ahmtgunr,6B+,1,True,,4.0,4.0
+2023-02-02,PHO MAI,6C+,Peter Sebio,6C+,2,True,,5.5,5.5
+2023-02-02,ENTER SANDBAG,6C+,Christian Thorjussen,6C+,3,False,,5.5,5.5
+2023-02-02,NORTHSIDE,7A,Matt Mcnair,7A,3,False,,6.0,6.0
+2023-01-31,MOVING OUT,6B+,Kyle Knapp,6B+,2,False,,4.0,4.0
+2023-01-31,PROBLEM#90,6B+,akihiro ishii,6B+,1,True,,4.0,4.0
+2023-01-31,BACK TO BASICS,6B+,Kyle Knapp,6B+,2,False,,4.0,4.0
+2023-01-31,GESIER-RIGHT HAND,6C+,Alex Arroyo,6C,2,True,,5.5,5.0
+2023-01-31,ENTER SANDBAG,6C+,Christian Thorjussen,6C+,2,False,,5.5,5.5
+2023-01-31,DIVESTMENT PLAN,6B+,will winham,6B+,1,True,,4.0,4.0
+2023-01-28,DSTYLE NEW,6B+,Dworkin,6B+,2,False,,4.0,4.0
+2023-01-24,課題24,6B+,atsushi takizawa,6B+,1,True,,4.0,4.0
+2023-01-24,QUARANTINE #4,6B+,Erin Daniel,6B+,2,True,,4.0,4.0
+2023-01-24,FORSØK 17,6B+,atoneni,6B+,1,True,,4.0,4.0
+2023-01-24,SALTEDBLOCKS 1,6B+,Martin Blizi,6B+,1,True,,4.0,4.0
+2023-01-19,THE SPLATTER EFFECT,6B+,Ian Cavanaugh,6C,2,True,,4.0,5.0
+2023-01-19,VIVA,6B+,Hakan Ertekin,6C,3,True,,4.0,5.0
+2023-01-19,ASTRO CREEP,6B+,Jonny Summers,6B+,3,False,,4.0,4.0
+2022-12-29,VIVA,6B+,Hakan Ertekin,6B+,3,False,,4.0,4.0
+2022-12-29,VIVA,6B+,Hakan Ertekin,6B+,3,False,,4.0,4.0
+2022-12-29,ASTRO CREEP,6B+,Jonny Summers,6B+,3,False,,4.0,4.0
+2022-12-29,GESIER,6C+,Alex Arroyo,6C,1,True,,5.5,5.0
+2022-12-29,A LITTLE CROSSING,6C+,christian luus,6C+,5,False,,5.5,5.5
+2022-12-29,HARD TIMES,7A,Ben Moon,7A,2,False,,6.0,6.0
+2022-12-29,I LOVE ROCK AND ROLL,6C+,Nathan Johnson,6C+,1,True,,5.5,5.5
+2022-12-25,KLINGON EASY,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-12-25,FLASH GORDON,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-12-25,GETTING FINGERS READY,6B+,Mark Gadomski,6B+,1,True,,4.0,4.0
+2022-12-25,YOURS,6C,Felicity Holt,6C,2,False,,5.0,5.0
+2022-12-25,PHO MAI,6C+,Peter Sebio,6C+,2,False,,5.5,5.5
+2022-12-25,I LOVE ROCK AND ROLL,6C+,Nathan Johnson,6C+,3,False,,5.5,5.5
+2022-12-25,GESIER,6C+,Alex Arroyo,6C+,5,False,,5.5,5.5
+2022-12-25,CONFIDENCE BOOST,6B+,Henrik Berg,6B+,2,False,,4.0,4.0
+2022-12-21,BITTER,6B+,Riccardo Caprasecca,6B+,1,True,,4.0,4.0
+2022-12-21,FAR FROM THE MADDING CROWD,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-12-21,YOURS,6C,Felicity Holt,6C,1,False,,5.0,5.0
+2022-12-21,PE3/1,6C,Nick Churchill,6C,3,True,,5.0,5.0
+2022-12-21,SOURKRAWT,6C,Kyle Knapp,6C,1,False,,5.0,5.0
+2022-12-21,7A TOO MUCH,6C+,CH Kuo,6C+,4,True,,5.5,5.5
+2022-12-21,LEAN BACK,6C+,Cameron Jaeger,6C,1,True,,5.5,5.0
+2022-12-21,PHO MAI,6C+,Peter Sebio,6C+,3,False,,5.5,5.5
+2022-12-21,"RIGHTNESS, PT.3",6C+,Alex Arroyo,6C+,1,False,,5.5,5.5
+2022-12-15,LE UOVA SODE,6C,Ale Alekos,6B+,1,True,,5.0,4.0
+2022-12-15,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-12-15,YOU'RE AMAZING,6C,Jacob Lindroos,6B+,1,True,,5.0,4.0
+2022-12-15,VIVA,6B+,Hakan Ertekin,6B+,3,False,,4.0,4.0
+2022-12-15,NORTHSIDE,7A,Matt Mcnair,7A,4,False,,6.0,6.0
+2022-12-11,TBA WARMUP 1,6B+,Luis Rodriguez,6B+,1,False,,4.0,4.0
+2022-12-11,BRZÓZON 2,6B+,Ania Orlowska,6B+,4,False,,4.0,4.0
+2022-12-11,ATTREZZO DI TORTURA,6C+,Lorenzo Locatelli,6C+,3,False,,5.5,5.5
+2022-12-11,FULL MOON PARTY,6C,Kyle Knapp,6C,4,False,,5.0,5.0
+2022-12-10,STANDING ROCK,6B+,Kyle Knapp,6B+,3,False,,4.0,4.0
+2022-12-08,IN MY APPROACH SHOES...,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-12-08,NO FOOT,6B+,simone antuzzi,6B+,2,False,,4.0,4.0
+2022-12-08,HON'S WAY TO HELL,6B+,Carlo Santiago,6B+,2,True,,4.0,4.0
+2022-12-08,HARD TIMES,7A,Ben Moon,7A,5,False,,6.0,6.0
+2022-12-08,IMPROVVISAZIONE,7A,Jean-Pierre Bovo,7A,3,True,,6.0,6.0
+2022-12-08,NORTHSIDE,7A,Matt Mcnair,7A,4,False,,6.0,6.0
+2022-12-05,WARM ME UP,6B+,David Carmona,6B+,2,True,,4.0,4.0
+2022-12-05,SALUHALLEN 4,6B+,Joakim Aagaerd,6C,3,True,,4.0,5.0
+2022-12-05,SPOONBILL,6B+,Bryant Noble,6B+,4,True,,4.0,4.0
+2022-12-05,UP!!!,6B+,Branko,6B+,3,False,,4.0,4.0
+2022-12-05,GESIER-RIGHT HAND,6C+,Alex Arroyo,6C+,3,False,,5.5,5.5
+2022-12-01,CHOSSY MESS,6B+,orion feist,6B+,2,False,,4.0,4.0
+2022-12-01,TIPI DA SALETTA,6B+,Averau,6B+,2,False,,4.0,4.0
+2022-12-01,HER COMES THE KING,6C+,Alex Thomas,6C,3,True,,5.5,5.0
+2022-12-01,BINGO WAS HIS NAME,6C+,Nathan Johnson,6C+,4,True,,5.5,5.5
+2022-12-01,TIJUANA,6C+,pau galofre,6C+,3,True,,5.5,5.5
+2022-11-29,E-Z CHEESE,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-11-29,ATTIC V - 2,6B+,Jo,6B+,1,True,,4.0,4.0
+2022-11-29,HATHA YOGA,6B+,janezkranjski,6B+,2,False,,4.0,4.0
+2022-11-29,WARM UP 1031,6B+,lyndsey,6B+,2,True,,4.0,4.0
+2022-11-29,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2022-11-29,LEAP CREEP,6C+,Braxton Stratton,6C+,2,True,,5.5,5.5
+2022-11-29,HARD TIMES,7A,Ben Moon,7A,3,False,,6.0,6.0
+2022-11-29,HOCUS POCUS,6C+,Ben Moon,6C+,3,True,,5.5,5.5
+2022-11-29,FLAPODROM,6C+,Sebastian Drüeke,6C,2,True,,5.5,5.0
+2022-11-24,BISCUITS AND GRAVY,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-11-24,COSMIC MONSTERS,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-11-24,FORSØK 25,6B+,atoneni,6B+,2,True,,4.0,4.0
+2022-11-24,CROSSOVER,7A,Alex Arroyo,6C+,1,True,,6.0,5.5
+2022-11-24,HARD TIMES,7A,Ben Moon,7A,3,False,,6.0,6.0
+2022-11-24,PURGATORY,6C,Jonath Williams,6C,2,True,,5.0,5.0
+2022-11-24,LEAP CREEP,6C+,Braxton Stratton,6C+,2,False,,5.5,5.5
+2022-11-22,TE GUSTA?,6B+,Paul Robinson,6B+,1,True,,4.0,4.0
+2022-11-22,ASTRO CREEP,6B+,Jonny Summers,6B+,3,False,,4.0,4.0
+2022-11-22,IMPROVVISAZIONE,7A,Jean-Pierre Bovo,7A,5,False,,6.0,6.0
+2022-11-17,YAYABLACK,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-11-17,ASTRO CREEP,6B+,Jonny Summers,6B+,2,False,,4.0,4.0
+2022-11-17,CROSSOVER,7A,Alex Arroyo,7A,4,False,,6.0,6.0
+2022-11-17,IMPROVVISAZIONE,7A,Jean-Pierre Bovo,7A,5,False,,6.0,6.0
+2022-11-15,WARM UP NO. 8,6B+,Luis Rodriguez,6B+,1,True,,4.0,4.0
+2022-11-15,SHAKEDOWN STREET,6C+,Matt Poiesz,6C+,1,True,,5.5,5.5
+2022-11-15,OVN,6C,Jørgen Bryn Henriksen,6C+,1,True,,5.0,5.5
+2022-11-10,SHAKEDOWN STREET,6C+,Matt Poiesz,6C+,5,False,,5.5,5.5
+2022-11-10,V4 GUMBY,6B+,Stefan Stoyanov,6B+,3,True,,4.0,4.0
+2022-11-10,WARM UP NO. 8,6B+,Luis Rodriguez,6B+,5,False,,4.0,4.0
+2022-11-04,OUTLANDERS FEELINGS 6B,6B+,Lukasz Bolach,6B+,3,True,,4.0,4.0
+2022-11-04,F**K TRUMP!,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-11-04,TE GUSTA?,6B+,Paul Robinson,6B+,2,False,,4.0,4.0
+2022-11-04,SHAKEDOWN STREET,6C+,Matt Poiesz,6C+,5,False,,5.5,5.5
+2022-11-03,NIMBUS,6B+,Larissa Kruhs,6B+,1,True,,4.0,4.0
+2022-11-03,STANDARD AND POOR'S,6B+,Vincent Minecci,6B+,1,True,,4.0,4.0
+2022-11-03,THE SPLATTER EFFECT,6B+,Ian Cavanaugh,6B+,1,False,,4.0,4.0
+2022-11-03,V4 GUMBY,6B+,Stefan Stoyanov,6B+,1,False,,4.0,4.0
+2022-10-26,WINKYLANDIA,6C,Nicole Belletti,6C,2,True,,5.0,5.0
+2022-10-26,SHAKEDOWN STREET,6C+,Matt Poiesz,6C+,2,False,,5.5,5.5
+2022-10-26,ACG4,6C,bkkim,6C,3,True,,5.0,5.0
+2022-10-26,YOURS,6C,Felicity Holt,6C,2,False,,5.0,5.0
+2022-10-23,SB WARM UP (6A),6B+,Arran Stubbington,6B+,1,True,,4.0,4.0
+2022-10-23,V4 FLASH,6B+,Tom Mavrovic,6B+,1,True,,4.0,4.0
+2022-10-23,V4 GUMBY,6B+,Stefan Stoyanov,6B+,1,False,,4.0,4.0
+2022-10-23,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2022-10-23,TESS,6C+,Ben Moon,6C+,2,True,,5.5,5.5
+2022-10-23,OVN,6C,Jørgen Bryn Henriksen,6C,2,False,,5.0,5.0
+2022-10-23,MAGNUM,7A,Lukasz Zielonka,7A,3,True,,6.0,6.0
+2022-10-19,TESS,6C+,Ben Moon,6C+,3,False,,5.5,5.5
+2022-10-19,OVN,6C,Jørgen Bryn Henriksen,6C,1,False,,5.0,5.0
+2022-10-15,CALLA,6B+,Riccardo Caprasecca,6C+,3,True,,4.0,5.5
+2022-10-15,YOU GET A CAR,6B+,Mfi,6B+,1,True,,4.0,4.0
+2022-10-15,WARM UP NO. 8,6B+,Luis Rodriguez,6B+,2,False,,4.0,4.0
+2022-10-15,OVN,6C,Jørgen Bryn Henriksen,6C,3,False,,5.0,5.0
+2022-10-15,MAGNUM,7A,Lukasz Zielonka,7A,3,False,,6.0,6.0
+2022-10-12,AL A GAIT OR?,6B+,mattw,6B+,1,True,,4.0,4.0
+2022-10-12,MAGGIE’S PROBLEM,6B+,Taylor Kosman,6B+,1,True,,4.0,4.0
+2022-10-12,MAGNUM,7A,Lukasz Zielonka,7A,2,False,,6.0,6.0
+2022-10-12,THE SPLATTER EFFECT,6B+,Ian Cavanaugh,6B+,2,False,,4.0,4.0
+2022-10-11,MARK2,6B+,markwynneuk,6B+,1,True,,4.0,4.0
+2022-10-11,ACG12,6B+,bkkim,6B+,1,True,,4.0,4.0
+2022-10-11,ACG12,6B+,bkkim,6B+,1,True,,4.0,4.0
+2022-10-11,SB WARM UP (6A),6B+,Arran Stubbington,6B+,1,True,,4.0,4.0
+2022-10-06,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-10-06,超絶技巧,6C,Takuto Koshiba,6B+,1,True,,5.0,4.0
+2022-10-06,#2 KH,6C+,Kyle Hilton,6C+,1,True,,5.5,5.5
+2022-10-04,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-10-01,ATTREZZO DI TORTURA,6C+,Lorenzo Locatelli,6C+,1,False,,5.5,5.5
+2022-10-01,BIGGY SMALLS,6C,Alex Arroyo,6C,2,True,,5.0,5.0
+2022-10-01,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2022-10-01,SOFT THE PUZZLE,6C+,PJMOONCLIMBS,6C+,3,True,,5.5,5.5
+2022-10-01,OVN,6C,Jørgen Bryn Henriksen,6C,3,False,,5.0,5.0
+2022-09-29,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-29,DSTYLE,6B+,hamad_climbs,6B+,1,True,,4.0,4.0
+2022-09-29,ATTREZZO DI TORTURA,6C+,Lorenzo Locatelli,6C+,1,True,,5.5,5.5
+2022-09-29,MOON CASTLE,6C,Ben Moon,6C,1,False,,5.0,5.0
+2022-09-29,TESS,6C+,Ben Moon,6C+,2,False,,5.5,5.5
+2022-09-29,SOFT THE PUZZLE,6C+,PJMOONCLIMBS,6C+,4,False,,5.5,5.5
+2022-09-29,GRIFETE HANDS,6C,edu moya,6C,2,False,,5.0,5.0
+2022-09-22,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-22,JUST ANOTHER DAY,6C,Reuben Mardan,6B+,1,True,,5.0,4.0
+2022-09-22,MOON CASTLE,6C,Ben Moon,6C,3,False,,5.0,5.0
+2022-09-22,COBIA,6C+,Bryant Noble,6C+,2,True,,5.5,5.5
+2022-09-18,JUST ANOTHER DAY,6C,Reuben Mardan,6C,1,True,,5.0,5.0
+2022-09-18,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-18,DSTYLE,6B+,hamad_climbs,6B+,2,True,,4.0,4.0
+2022-09-18,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,1,True,,5.0,5.0
+2022-09-18,MOON CASTLE,6C,Ben Moon,6C,2,False,,5.0,5.0
+2022-09-18,VORTEX ORIGINAL,6C,Yasu Toma,6C,2,True,,5.0,5.0
+2022-09-10,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-10,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-10,TESS WIDE,6C,Ben Moon,6C,1,True,,5.0,5.0
+2022-09-10,JUST ANOTHER DAY,6C,Reuben Mardan,6C,1,False,,5.0,5.0
+2022-09-10,MOON CASTLE,6C,Ben Moon,6C,3,False,,5.0,5.0
+2022-09-08,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-08,TESS WIDE,6C,Ben Moon,6B+,1,True,,5.0,4.0
+2022-09-08,DSTYLE,6B+,hamad_climbs,6B+,1,False,,4.0,4.0
+2022-09-08,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,3,False,,5.0,5.0
+2022-09-08,TESS,6C+,Ben Moon,6C+,2,False,,5.5,5.5
+2022-09-06,ATTREZZO DI TORTURA,6C+,Lorenzo Locatelli,6C+,2,True,,5.5,5.5
+2022-09-06,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2022-09-06,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-09-06,TESS WIDE,6C,Ben Moon,6C,1,False,,5.0,5.0
+2022-09-06,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,3,False,,5.0,5.0
+2022-09-01,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2022-09-01,TESS WIDE,6C,Ben Moon,6C,1,True,,5.0,5.0
+2022-09-01,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,2,True,,5.0,5.0
+2022-09-01,ATTREZZO DI TORTURA,6C+,Lorenzo Locatelli,6C+,3,False,,5.5,5.5
+2022-09-01,#2 KH,6C+,Kyle Hilton,6C+,2,True,,5.5,5.5
+2022-09-01,紙一重 -KAMI HITOE-,6C+,seishirou shirai,6C+,3,True,,5.5,5.5
+2022-09-01,紙一重 -KAMI HITOE-,6C+,seishirou shirai,6C+,3,True,,5.5,5.5
+2022-08-30,DSTYLE,6B+,hamad_climbs,6B+,1,True,,4.0,4.0
+2022-08-30,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,1,False,,4.0,4.0
+2022-08-30,JUST ANOTHER DAY,6C,Reuben Mardan,6C+,1,True,,5.0,5.5
+2022-08-30,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2022-08-30,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,3,False,,5.0,5.0
+2022-08-26,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-08-26,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-08-26,ACG30,6C,bkkim,6C,2,False,,5.0,5.0
+2022-08-26,JUST ANOTHER DAY,6C,Reuben Mardan,6C,1,True,,5.0,5.0
+2022-08-23,KLINGON EASY,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-23,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-23,DUPLICATE TEST,6B+,Richard Chew,6B+,1,True,,4.0,4.0
+2022-08-21,BANANARAMA,6C,Blake Lehmans,6B+,1,True,,5.0,4.0
+2022-08-21,超絶技巧,6C,Takuto Koshiba,6C,2,True,,5.0,5.0
+2022-08-21,TESS WIDE,6C,Ben Moon,6C,2,True,,5.0,5.0
+2022-08-21,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,1,True,,4.0,4.0
+2022-08-21,ACG30,6C,bkkim,6C,3,True,,5.0,5.0
+2022-08-21,BIGGY SMALLS,6C,Alex Arroyo,6C,1,True,,5.0,5.0
+2022-08-21,FIRST SET: PINCH 'N' INCH,6C,Melissa Clements,6C,2,False,,5.0,5.0
+2022-08-21,HOCUS POCUS,6C+,Ben Moon,6C+,3,False,,5.5,5.5
+2022-08-21,JUST ANOTHER DAY,6C,Reuben Mardan,6C,1,False,,5.0,5.0
+2022-08-15,EASY-PEASY LEMON SQUEEZY,6B+,Movement Crew,6B+,1,True,,4.0,4.0
+2022-08-15,KLINGON EASY,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-15,RISCALDAMENTO TIA 6A,6B+,Federico Camboni,6B+,2,True,,4.0,4.0
+2022-08-15,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,2,True,,4.0,4.0
+2022-08-15,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,2,True,,4.0,4.0
+2022-08-15,超絶技巧,6C,Takuto Koshiba,6B+,1,True,,5.0,4.0
+2022-08-15,FULL MOON PARTY,6C,Kyle Knapp,6C,1,True,,5.0,5.0
+2022-08-07,BITTER,6B+,Riccardo Caprasecca,6B+,2,True,,4.0,4.0
+2022-08-07,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-07,FLASH GORDON,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0
+2022-08-07,AN EASY PROBLEM,6B+,Brett Duffield,6B+,1,True,,4.0,4.0
+2022-08-06,SALUHALLEN 6,6B+,Joakim Aagaerd,6B+,3,True,,4.0,4.0
+2022-08-06,RISCALDAMENTO TIA 6A,6B+,Federico Camboni,6B+,1,True,,4.0,4.0
+2022-08-06,LE UOVA SODE,6C,Ale Alekos,6C,3,True,,5.0,5.0
+2022-08-06,FULL MOON PARTY,6C,Kyle Knapp,6C,3,False,,5.0,5.0
+2022-08-04,AN EASY PROBLEM,6B+,Brett Duffield,6B+,1,True,,4.0,4.0
+2022-08-04,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-04,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-08-04,SALUHALLEN 6,6B+,Joakim Aagaerd,6B+,1,True,,4.0,4.0
+2022-08-04,PLEDGE TO HEDGE,6B+,Hoseok Lee,6B+,3,True,,4.0,4.0
+2022-08-04,EASY-PEASY LEMON SQUEEZY,6B+,Movement Crew,6B+,1,True,,4.0,4.0
+2022-08-04,EASY-PEASY LEMON SQUEEZY,6B+,Movement Crew,6B+,1,True,,4.0,4.0
+2022-08-04,LE UOVA SODE,6C,Ale Alekos,6C,3,False,,5.0,5.0
+2022-08-04,FULL MOON PARTY,6C,Kyle Knapp,6C,3,False,,5.0,5.0
+2022-08-04,BANANARAMA,6C,Blake Lehmans,6B+,1,True,,5.0,4.0
+2022-08-04,TESS WIDE,6C,Ben Moon,6C,2,True,,5.0,5.0
+2022-08-01,CAKEWALK,6B+,Kyle Knapp,6B+,4,True,,4.0,4.0
+2022-08-01,FAR FROM THE MADDING CROWD,6B+,Ben Moon,6B+,5,True,,4.0,4.0
+2022-08-01,PULL YASELF UP! YAY,6B+,Hoseok Lee,6B+,4,True,,4.0,4.0
+2022-08-01,ATAUALPA,6C,Ale Alekos,6C,4,True,,5.0,5.0
+2022-07-27,DROP DEAD TENRYU,6C,Shiro Hosojima,6C,2,True,,5.0,5.0
+2022-07-17,AN EASY PROBLEM,6B+,Brett Duffield,6B+,1,True,,4.0,4.0
+2022-07-17,WUTHERING HEIGHTS,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-07-17,BITTER,6B+,Riccardo Caprasecca,6B+,2,True,,4.0,4.0
+2022-07-17,KLINGON EASY,6B+,Ben Moon,6B+,1,True,,4.0,4.0
+2022-07-17,FLASH GORDON,6B+,Kyle Knapp,6B+,1,True,,4.0,4.0

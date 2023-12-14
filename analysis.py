@@ -11,6 +11,18 @@ import datetime
 
 Problem = namedtuple("Problem", "date name grade setter mygrade attempts ticked comment")
 
+FONT_TO_HUECO = {
+    "6B" : 3,
+    "6B+": 4,
+    "6C" : 5,
+    "6C+": 5.5,
+    "7A" : 6,
+    "7A+": 7,
+    "7B" : 8,
+    "7B+": 8.5
+}
+
+
 def load_df(fp: str) -> pd.DataFrame:
     # Redundant wrapper
     df = pd.read_csv(fp)
@@ -111,6 +123,8 @@ def split_text(df: pd.DataFrame) -> pd.DataFrame:
     df.set_index("date")
 
     df.loc[:, "attempts"] = df.attempts.apply(_convert_attempt_to_numeric)
+    df.loc[:, "grade_v"] = df.grade.apply(lambda g: FONT_TO_HUECO[g])
+    df.loc[:, "mygrade_v"] = df.mygrade.apply(lambda g: FONT_TO_HUECO[g])
 
     return df
 
