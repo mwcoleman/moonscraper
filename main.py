@@ -16,16 +16,6 @@ from collections import namedtuple
 
 from datetime import datetime, timedelta
 
-
-getGecko_installed = True
-
-try:
-    from get_gecko_driver import GetGeckoDriver
-
-
-except BaseException:
-    getGecko_installed = False
-
 def config_logger(logger: logging.Logger) -> logging.Logger:
     """
     Standardise logging output
@@ -57,27 +47,6 @@ class Scraper:
 
         pathlib.Path(self.image_path).mkdir(parents=True, exist_ok=True)
 
-        # # use getGecko to get the driver
-        # if getGecko_installed:
-        #     _logger.info("Getting GeckoDriver")
-        #     get_driver = GetGeckoDriver()
-        #     get_driver.install()
-
-        # self.MONTH_MAP = {
-        #     "Jan": 1,
-        #     "Feb": 2,
-        #     "Mar": 3,
-        #     "Apr": 4,
-        #     "May": 5,
-        #     "Jun": 6,
-        #     "Jul": 7,
-        #     "Aug": 8,
-        #     "Sep": 9,
-        #     "Oct": 10,
-        #     "Nov": 11,
-        #     "Dec": 12
-        # }
-
     def fetch_data(
             self, 
             USERNAME: str, 
@@ -99,7 +68,10 @@ class Scraper:
 
         driver.get(self.MB_URL)
 
-
+        # Setup implicit wait timeout
+        # If element is loaded within this time (s), driver will return it. 
+        # otherwise will throw error
+        driver.implicitly_wait(5)
 
         # login
         driver.find_element(By.ID, "loginDropdown").click()
@@ -107,39 +79,30 @@ class Scraper:
         driver.find_element(By.ID, "Login_Password").send_keys(PASSWORD)
         driver.find_element(By.ID, "navlogin").click()
 
-        # WebDriverWait(
-        #     driver, 10).until(
-        #     EC.presence_of_element_located(
-        #         (By.ID, "navlogin")))
-        #WebDriverWait(browser, 10).until(EC.presence_of_element_located((By.ID, "element_id")))
-        time.sleep(5)
+        # time.sleep(5)    
+
         # navigate to logbook
         # driver.get("https://moonboard.com/Logbook/Index")
         driver.find_element(By.ID,"llogbook").click()
-        time.sleep(0.5)
+        # time.sleep(0.5)
         driver.find_element(By.LINK_TEXT, "VIEW").click()
 
-        time.sleep(5)  # TODO: await properly
+        # time.sleep(5)  # TODO: await properly
 
         # select version
         select = Select(driver.find_element(By.ID,"Holdsetup"))
         select.select_by_index(board_number)  
 
-        time.sleep(5)  # TODO: await properly
+        # time.sleep(5)  # TODO: await properly
 
 
         
         # Lag
-        time.sleep(3)
+        # time.sleep(3)
 
         # create list of elements
         scraped_entries = []
 
-        # # TODO: What even..
-        # def any_nested(entry_list, entry_text): 
-        #     return any([k == entry_text for k, _, _ in entry_list])
-        
-        
         # Each element is a page that contains up to 40 dates 
         # does not include the first page, currently, selected, element XPATh 'k-state-selected'
         page_elements = driver.find_elements(By.XPATH,"//a[@class='k-link']")
@@ -192,7 +155,7 @@ class Scraper:
             # for date_expander, header in zip(date_expanders[:earliest_entry], headers[:earliest_entry]):
             for date_expander in date_expanders[:earliest_entry]:
                 date_expander.click()
-                time.sleep(1)
+                # time.sleep(1)
 
             # Should contain all entries for the entire page
             entries = main_section.find_elements(By.CLASS_NAME, "entry")
@@ -209,7 +172,7 @@ class Scraper:
                 if not os.path.isfile(img_path):
                     # Get screenshot only if the file doesn't exist
                     entry.click()
-                    time.sleep(1)
+                    # time.sleep(1)
                     driver.get_screenshot_as_file(img_path)       
                 
                 # get data
@@ -224,28 +187,9 @@ class Scraper:
                 # Clicker id is always the last in the list (for progressing to next page.)
                 next_page_clicker = driver.find_elements(By.XPATH,"//a[@class='k-link k-pager-nav']")[-1]
                 next_page_clicker.click()
-                time.sleep(5)
+                # time.sleep(5)
                 
         _logger.info(f"Completed scraping {len(scraped_entries)} entries.")
-        # process data
-        # if return_format == 'json':
-        #     formatted_data = []
-        #     for (data, date, img_name) in res:
-        #         data_arr = data.split('\n')
-        #         day, month, year = date.split('\n')[0].split(' ')
-        #         day, month, year = int(day), self.MONTH_MAP[month], int(year)
-
-        #         formatted = {
-        #             'Name': data_arr[0],
-        #             'Setter': data_arr[1],
-        #             'Grade': data_arr[2].split('.')[0],
-        #             'Date': (day, month, year),
-        #             'png': img_name,
-        #             'raw_text': data
-        #         }
-
-        #         formatted_data.append(formatted)
-        # else:
         df = pd.DataFrame(([e.date, e.text, e.imagepath] for e in scraped_entries), 
                           columns=['date', 'text', 'img_path'])
         driver.quit()
