@@ -53,10 +53,12 @@ def find_positions(img_board: np.ndarray, blank_board: np.ndarray, bc_img: Board
     '''
     # trim
     img_board = img_board[bc_img.ymin:bc_img.ymax, bc_img.xmin:bc_img.xmax]
-    # resize to match blank
+    # resize to match blank - Crop to hardcoded evenly spaced bolt sizes
     img_board = skimage.transform.resize(img_board, blank_board.shape)
     # Find differences (circles..)
     matched = np.logical_and(img_board, blank_board).astype(float)
+    # Each hold centre is spaced in 38,38 pixel blocks.
+    matched = matched[47:732, 52:470]
     # Reduce dimension by summing RGBA values and comparing to white (4)
     m = matched.sum(axis=(-1)) == 4
     # Close small dark areas (aliasing artifacts from resize)
@@ -76,18 +78,25 @@ def find_positions(img_board: np.ndarray, blank_board: np.ndarray, bc_img: Board
         centroid_img[int(y), int(x)] = 1.
     
     # Now we reduce dimension to 20 x 13 by maxpooling. 
-    # In future we may want to specify grid positions of holds. 
-    # For now it's enough to have a constant reducing function
+    # In future (now) we may want to specify grid positions of holds. 
 
-    y_size = centroid_img.shape[0] // 20
-    x_size = centroid_img.shape[1] // 13
+    # y_size = centroid_img.shape[0] // 18
+    # x_size = centroid_img.shape[1] // 11
+
+    # assert x_size == y_size and x_size == 38, "Image size error (should be 18 x 11, 38px regions)"
+
     reduced_m = skimage.measure.block_reduce(
         centroid_img, 
-        block_size=(y_size, x_size), 
+        block_size=(38, 38), 
         func=np.max
     )
     # reduce the n-dim vector
-    return np.floor(reduced_m.ravel()) if truncate else reduced_m.ravel()
+    # return np.floor(reduced_m.ravel()) if truncate else reduced_m.ravel()
+
+    hold_positions = [f'{"ABCDEFGHIJK"[x]}{18-y}' 
+                      for (y,x) in np.argwhere(reduced_m)]
+    
+    return hold_positions[::-1]
 
 def image_to_vector(blank_board_screenshot_path: str, img_screenshot_dir: str):
 
@@ -108,17 +117,25 @@ def image_to_vector(blank_board_screenshot_path: str, img_screenshot_dir: str):
     _logger.info(f"{len(img_paths)} images found in directory.")
     image_vec = {}
 
+    results_dict = {
+        'name': [],
+        'sequence': []
+    }
 
     for i, fp in enumerate(img_paths):
-        name = os.path.split(fp)[1][:-3]
+        name = os.path.split(fp)[1][:-4]
         img = plt.imread(fp)
         img_bc = find_edges(img, board_background_colour)
         vec = find_positions(img, blank_cropped, img_bc, truncate=True)
-        image_vec[name] = vec
+        # image_vec[name] = vec
 
-        _logger.info(f"{i}: {name} has {round(np.sum(vec))} holds")
+        results_dict['name'].append(name)
+        results_dict['sequence'].append(vec)
 
-    pickle.dump(image_vec, "vec.pkl")
+        _logger.info(f"{i}: {name} has {len(vec)} holds")
+
+    pd.DataFrame(results_dict).to_csv('hold_sequences.csv', index=False)
+    # pickle.dump(image_vec, "vec.pkl")
     
 
 if __name__ == "__main__":
