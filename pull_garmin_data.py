@@ -2,8 +2,11 @@ import garminconnect
 import pandas as pd
 import sys, os
 from getpass import getpass
-from datetime import datetime
+from datetime import datetime, timedelta
 from collections import defaultdict, namedtuple
+import logging
+import argparse
+from typing import Tuple, Set, List, Dict
 
 GARTH_HOME = os.getenv("GARTH_HOME", "~/.garth")
 
@@ -11,6 +14,9 @@ GARTH_HOME = os.getenv("GARTH_HOME", "~/.garth")
 ACTIVITIES = {
     "Deadlift",
     "BP + HB max hang",
+    "HB + (PUP & BP)",
+    "HB + Pull Up",
+    "DL + HB max hangs",
     "BP 80%",
     "No Hangs",
     "pull up weighted"
@@ -24,8 +30,27 @@ NAME_MAPPINGS = {
     "PULL_UP" : "weighted pull up"
 }
 
+def config_logger(logger: logging.Logger) -> logging.Logger:
+    """
+    Standardise logging output
+    """
 
-def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True):
+    logger.setLevel(logging.INFO)
+    logger.propogate = False
+
+    formatter = logging.Formatter('%(asctime)s: %(levelname)s [%(filename)s:%(lineno)s]: %(message)s')
+
+    stdout_handler = logging.StreamHandler(stream=sys.stdout)
+    stdout_handler.setFormatter(formatter)
+
+    logger.addHandler(stdout_handler)
+    return logger
+
+_logger = config_logger(logging.getLogger(__name__))
+
+
+
+def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True, n_most_recent_activities=30):
     
     def compare_date(dt_less, dt_greater):
         
@@ -45,7 +70,7 @@ def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True):
 
     print(f'Connected with id: {garmin.display_name}')
 
-    activities = garmin.get_activities(0,30) # from most recent, so should always be ok
+    activities = garmin.get_activities(0,n_most_recent_activities) # from most recent, so should always be ok
     filtered_activities = [
         a for a in activities 
         if a['activityName'] in ACTIVITIES
@@ -80,12 +105,9 @@ def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True):
                         else wset['repetitionCount']
         # ereps = max(1, wset['repetitionCount']) # default to 1 if garmin didnt log correctly
         weight = wset['weight']
-        # Same format as reflex
         try:
-            dt = datetime.strftime(
-                datetime.strptime(wset['startTime'][:10], "%Y-%m-%d"),
-                "%d %b %y"
-            )
+               dt = datetime.strptime(wset['startTime'][:10], "%Y-%m-%d")
+
         except:
             # TODO: Some exercises don't log the starttime weirdly. In this case take the last exercise date as log.
             pass
@@ -99,5 +121,54 @@ def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True):
         refactored_working_sets = pd.DataFrame(refactored_working_sets, columns=LoggedGarminExercise._fields)
     return refactored_working_sets
 
+def find_existing_date(
+        existing_csv_path: str, 
+        date_format: str = "%d %b %y"
+        ) -> Tuple[pd.DataFrame, datetime]:
+    # Return datetime obj
+    existing_data = pd.read_csv(existing_csv_path)
+    dates = pd.to_datetime(existing_data.date, format=date_format)
+    last_date = sorted(dates, reverse=True)[0]
+    # last_date = datetime.strptime(existing_data['date'][0], date_format)
+    _logger.info(f"Existing csv loaded, date found {last_date}")
+    return existing_data, last_date
+
+
+def main():
+    parser = argparse.ArgumentParser(description="CLI Args")
+    parser.add_argument("-o", "--output-to", help="output file path for logbook entries")
+    parser.add_argument("--append-to-existing", default=None, type=str,
+                        help="path to existing csv to append from latest date, overrides from_date")
+    parser.add_argument("--from-date", default="2012-01-01",
+                        help="earliest date to extract logs from, %Y-%m-%d")
+    
+
+    args = parser.parse_args()
+
+
+    outfile = args.output_to
+
+    if os.path.exists(args.output_to):
+        newfile = input(f"{args.output_to} exists. New path and filename (blank to overwrite): ")
+        outfile = newfile if newfile != '' else args.output_to
+        # os.path.join(args.o, f"{newfile if newfile != '' else 'data.csv'}")
+
+
+    try:
+        existing_data, from_date = find_existing_date(args.append_to_existing, date_format="%Y-%m-%d")
+        args.from_date = (from_date + timedelta(days=1)).strftime("%Y-%m-%d")
+    except:
+        pass
+
+    data = pull_workout_data_from_date(args.from_date, n_most_recent_activities=9999)
+    data['date'] = data.date.strftime("%Y-%m-%d")
+    try:
+        data = pd.concat([data, existing_data], axis=0)
+    except:
+        pass
+
+    data.to_csv(outfile, index=False)
+
 if __name__=="__main__":
-    sys.exit(pull_workout_data_from_date('2012-12-02'))
+    # sys.exit(pull_workout_data_from_date('2012-12-02', n_most_recent_activities=9999))
+    sys.exit(main())

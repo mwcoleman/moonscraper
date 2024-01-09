@@ -1431,3 +1431,38 @@ JavaScript warning: https://www.moonboard.com/Scripts/pixi.min.js, line 16: Scri
 [116]</t/this._tick@https://www.moonboard.com/Scripts/pixi.min.js:16:4401
 
 [32802] Sandbox: Unexpected EOF, op 0 flags 00 path /proc/cpuinfo
+1702602445073	geckodriver	INFO	Listening on 127.0.0.1:44435
+1702602445581	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... ss" "--remote-debugging-port" "34271" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofile4uPjkv"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702602445885	Marionette	INFO	Marionette enabled
+1702602445930	Marionette	INFO	Listening on port 45039
+WebDriver BiDi listening on ws://127.0.0.1:34271
+Read port: 45039
+1702602446082	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.error: ({})
+DevTools listening on ws://127.0.0.1:34271/devtools/browser/706df3e1-15a9-497a-9745-87112f49c9fc
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.moonboard.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.moonboard.com."
+console.error: "update.locale" " file doesn't exist in either the application or GRE directories"
+1702602478521	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1702602653726	geckodriver	INFO	Listening on 127.0.0.1:55009
+1702602654235	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/usr ... te" "--remote-debugging-port" "58863" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "/tmp/rust_mozprofileOdLLBP"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1702602654879	Marionette	INFO	Marionette enabled
+1702602654936	Marionette	INFO	Listening on port 36741
+WebDriver BiDi listening on ws://127.0.0.1:58863
+Read port: 36741
+1702602655070	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.error: ({})
+DevTools listening on ws://127.0.0.1:58863/devtools/browser/2d0c5d22-c32a-4577-8449-95ec7480f753
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.moonboard.com."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://www.moonboard.com."
+JavaScript warning: https://www.moonboard.com/Scripts/pixi.min.js, line 16: WebGL context was lost.
+JavaScript warning: , line 0: WebGL warning: drawElementsInstanced: Tex image TEXTURE_2D level 0 is incurring lazy initialization.
+console.error: "update.locale" " file doesn't exist in either the application or GRE directories"
+1702602684956	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1702602820057	Marionette	INFO	Stopped listening on port 36741

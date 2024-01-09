@@ -43,8 +43,6 @@ def find_edges(img: np.ndarray, board_color_norm: float) -> tuple:
     xmin, xmax = np.min(board_coors[:,1]), np.max(board_coors[:,1])
     return BoardCoor(ymin, xmin, ymax, xmax)
 
-
-
 def find_positions(img_board: np.ndarray, blank_board: np.ndarray, bc_img: BoardCoor, truncate=True) -> np.ndarray:
     '''
     Takes a problem img, and background img (including hold setup) and returns a n-dim boolean signature vector
@@ -97,6 +95,7 @@ def find_positions(img_board: np.ndarray, blank_board: np.ndarray, bc_img: Board
                       for (y,x) in np.argwhere(reduced_m)]
     
     return hold_positions[::-1]
+
 
 def image_to_vector(blank_board_screenshot_path: str, img_screenshot_dir: str):
 

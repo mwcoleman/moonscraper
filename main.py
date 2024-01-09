@@ -12,7 +12,7 @@ import os, json, sys, argparse, time, pathlib
 import getpass
 import logging
 from collections import namedtuple
-
+from typing import Tuple, List, Dict, Set
 
 from datetime import datetime, timedelta
 
@@ -195,13 +195,22 @@ class Scraper:
         driver.quit()
         return df
 
+def find_existing_date(
+        existing_csv_path: str, 
+        date_format: str = "%d %b %y"
+        ) -> Tuple[pd.DataFrame, datetime]:
+    # Return datetime obj
+    existing_data = pd.read_csv(existing_csv_path)
+    last_date = datetime.strptime(existing_data['date'][0], date_format)
+    _logger.info(f"Existing csv loaded, date found {last_date}")
+    return existing_data, last_date
 
 def main():
     parser = argparse.ArgumentParser(description="CLI args")
     parser.add_argument("-b", type=int, choices=[0,1,2,3,4], default=4,
                         help='Board: 0-2024, 1-2020Mini, 2-2019, 3-2017, 4-2016')
     parser.add_argument("-d", "--debug", action="store_true")
-    parser.add_argument("-o", "--output-to", default="./data.csv", help="output path for json and images")
+    parser.add_argument("-o", "--output-to", default="./data.csv", help="output path")
     parser.add_argument("--output-images-to", default="./images", help="path to save images.")
     parser.add_argument("--from-date", type=str, default="30-01-99", help="Earliest date to extract logs from. %d %b %y")
     parser.add_argument("--append-to-existing", default=None, type=str, 
@@ -221,12 +230,8 @@ def main():
     password = getpass.getpass("Password:")
 
     try:
-        existing_data = pd.read_csv(args.append_to_existing)
-        last_date = datetime.strptime(existing_data['date'][0], "%d %b %y") 
-        args.from_date = (last_date + timedelta(days=1)).strftime("%d-%m-%y")
-
-        print(f"Existing csv loaded, date found {args.from_date}")
-
+        existing_data, from_date = find_existing_date(args.append_to_existing)
+        args.from_date = from_date.strftime("%d-%m-%y")
     except:
         pass
 
