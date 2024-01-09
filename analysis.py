@@ -119,7 +119,7 @@ def split_text(df: pd.DataFrame) -> pd.DataFrame:
         problem_list.append(Problem(dt, name, grade, setter, mygrade, attempt, ticked, comment))
 
     df = pd.DataFrame(problem_list, columns=Problem._fields)
-    df.loc[:,"date"] = df.date.apply(_date_text_to_dt)
+    df["date"] = df.date.apply(_date_text_to_dt)
     df.set_index("date")
 
     df.loc[:, "attempts"] = df.attempts.apply(_convert_attempt_to_numeric)

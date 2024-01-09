@@ -13,6 +13,8 @@ import getpass
 import logging
 from collections import namedtuple
 from typing import Tuple, List, Dict, Set
+from analysis import split_text
+
 
 from datetime import datetime, timedelta
 
@@ -230,7 +232,7 @@ def main():
     password = getpass.getpass("Password:")
 
     try:
-        existing_data, from_date = find_existing_date(args.append_to_existing)
+        existing_data, from_date = find_existing_date(args.append_to_existing, date_format="%Y-%m-%d")
         args.from_date = from_date.strftime("%d-%m-%y")
     except:
         pass
@@ -244,12 +246,16 @@ def main():
         args.from_date, 
         )
 
+    # Format dataframe
+    data = split_text(data)
+    data['date'] = data.date.dt.strftime("%Y-%m-%d")
     try:
         data = pd.concat([data, existing_data], axis=0)
     except:
         pass
 
     _logger.info(f"Writing to {outfile}")
+
 
     data.to_csv(outfile, index=False)
 

@@ -161,7 +161,7 @@ def main():
         pass
 
     data = pull_workout_data_from_date(args.from_date, n_most_recent_activities=9999)
-    data['date'] = data.date.strftime("%Y-%m-%d")
+    data['date'] = data.date.dt.strftime("%Y-%m-%d")
     try:
         data = pd.concat([data, existing_data], axis=0)
     except:
