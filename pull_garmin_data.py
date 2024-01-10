@@ -50,7 +50,11 @@ _logger = config_logger(logging.getLogger(__name__))
 
 
 
-def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True, n_most_recent_activities=30):
+def pull_workout_data_from_date(
+        dt: str = '1999-01-01', 
+        as_dataframe=True, 
+        n_most_recent_activities=30,
+        interactive_exclusion=False):
     
     def compare_date(dt_less, dt_greater):
         
@@ -71,9 +75,30 @@ def pull_workout_data_from_date(dt: str = '1999-01-01', as_dataframe=True, n_mos
     print(f'Connected with id: {garmin.display_name}')
 
     activities = garmin.get_activities(0,n_most_recent_activities) # from most recent, so should always be ok
+    
+    found_activity_types = list(set([a['activityName'] for a in activities]))
+    
+    if interactive_exclusion:
+        indexed_activity_types = [
+            (i,name) 
+            for i,name 
+            in enumerate(found_activity_types)
+        ]
+        print(f'Interactive mode. Found Activites:')
+        print(pd.DataFrame(found_activity_types, columns=["Name"]).to_string())
+
+        excluded = input(
+            f'Enter indices (listed above) of activities to exclude (e.g. "0,5,6"): ')
+            
+        excluded = [int(e) for e in excluded.split(",")]
+        excluded = [found_activity_types[i] for i in excluded]
+        
+    else:
+        excluded = [a for a in found_activity_types if a not in ACTIVITIES]
+
     filtered_activities = [
         a for a in activities 
-        if a['activityName'] in ACTIVITIES
+        if a['activityName'] not in excluded
         and compare_date(dt, a['startTimeLocal'][:10])
         ]
     # This is a list list of individual sets. 
@@ -136,11 +161,13 @@ def find_existing_date(
 
 def main():
     parser = argparse.ArgumentParser(description="CLI Args")
-    parser.add_argument("-o", "--output-to", help="output file path for logbook entries")
+    parser.add_argument("-o", "--output-to", default="./data/garmin_log.csv", help="output file path for logbook entries")
     parser.add_argument("--append-to-existing", default=None, type=str,
                         help="path to existing csv to append from latest date, overrides from_date")
     parser.add_argument("--from-date", default="2012-01-01",
                         help="earliest date to extract logs from, %Y-%m-%d")
+    parser.add_argument("--interactive-exclude", action='store_true')
+
     
 
     args = parser.parse_args()
@@ -160,7 +187,7 @@ def main():
     except:
         pass
 
-    data = pull_workout_data_from_date(args.from_date, n_most_recent_activities=9999)
+    data = pull_workout_data_from_date(args.from_date, n_most_recent_activities=9999, interactive_exclusion=args.interactive_exclude)
     data['date'] = data.date.dt.strftime("%Y-%m-%d")
     try:
         data = pd.concat([data, existing_data], axis=0)
