@@ -3,10 +3,12 @@ import pandas as pd
 import sys, os
 from getpass import getpass
 from datetime import datetime, timedelta
+import pytz
 from collections import defaultdict, namedtuple
 import logging
 import argparse
 from typing import Tuple, Set, List, Dict
+
 
 GARTH_HOME = os.getenv("GARTH_HOME", "~/.garth")
 
@@ -79,19 +81,34 @@ def pull_workout_data_from_date(
     found_activity_types = list(set([a['activityName'] for a in activities]))
     
     if interactive_exclusion:
-        indexed_activity_types = [
-            (i,name) 
-            for i,name 
-            in enumerate(found_activity_types)
-        ]
+        # indexed_activity_types = [
+        #     (i,name) 
+        #     for i,name 
+        #     in enumerate(found_activity_types)
+        # ]
         print(f'Interactive mode. Found Activites:')
         print(pd.DataFrame(found_activity_types, columns=["Name"]).to_string())
-
-        excluded = input(
-            f'Enter indices (listed above) of activities to exclude (e.g. "0,5,6"): ')
+        try:
+            with open('./data/excluded_activities_garmin.txt', 'r') as f:
+                excluded = f.read().split(',')
+                print(f'Preloaded exclusions: \n {excluded}')
+                print(f'Allowed activites: \n {[act for act in found_activity_types if act not in excluded]}')
+                reset = input('Do you wish to change this?("y" to change)') == 'y'
+        except:
+            reset = True
+        
+        if reset:
             
-        excluded = [int(e) for e in excluded.split(",")]
-        excluded = [found_activity_types[i] for i in excluded]
+            excluded = input(
+                f'Enter indices (listed above) of activities to exclude (e.g. "0,5,6"): ')
+                
+            excluded = [int(e) for e in excluded.split(",")]
+            excluded = [found_activity_types[i] for i in excluded]
+            with open('./data/excluded_activities_garmin.txt', 'w') as f:
+                f.write(','.join(excluded))
+            
+        
+
         
     else:
         excluded = [a for a in found_activity_types if a not in ACTIVITIES]
@@ -131,10 +148,14 @@ def pull_workout_data_from_date(
         # ereps = max(1, wset['repetitionCount']) # default to 1 if garmin didnt log correctly
         weight = wset['weight']
         try:
-               dt = datetime.strptime(wset['startTime'][:10], "%Y-%m-%d")
+               # Garmin connect times are UTC. hardcoded change to melbourne.
+               dt = datetime.fromisoformat(wset['startTime'].split('.')[0]).replace(tzinfo=pytz.utc)
+               dt = dt.astimezone(pytz.timezone("Australia/Melbourne"))
+            #    dt = datetime.strptime(wset['startTime'][:10], "%Y-%m-%d") + timedelta(hours = 11)
 
         except:
             # TODO: Some exercises don't log the starttime weirdly. In this case take the last exercise date as log.
+            print(f"error in starttime parsing: {wset['startTime']}")
             pass
         if weight is None or ename == 'UNKNOWN':
             # print(f"Errors of nonetype for {wset}")
