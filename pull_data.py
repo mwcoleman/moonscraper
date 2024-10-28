@@ -264,7 +264,11 @@ def find_existing_date(
 
 
 class ScrapeApp(App):
-    
+    CSS = """
+    #top-hoz-view {
+        height: auto;
+    }
+    """
     def __init__(self):
         super().__init__()
         self.agent = login()
@@ -277,22 +281,29 @@ class ScrapeApp(App):
         except:
                 excluded = []
 
-        self.preloaded_exclusions = excluded
+        self.loaded_exclusions = excluded
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
         button_id = event.button.id
         if button_id == "submit":
-            
-            pass
+            # Clean exclusion list
+            self.loaded_exclusions = []
+            for checkbox in self.query("Checkbox"):
+                if checkbox.value:
+                    self.loaded_exclusions.append(checkbox.label)
+                    
+            print(self.loaded_exclusions)
+
+            # pass
 
     def compose(self) -> ComposeResult:
-        with 
-        yield Button("submit", id="submit")
-        yield Input(value="01/01/1900", placeholder="dd/mm/yyyy")
+        with Horizontal(id="top-hoz-view"):
+            yield Button("submit", id="submit")
+            yield Input(value="01/01/1900", placeholder="dd/mm/yyyy")
         with VerticalScroll():
             for i, activity in enumerate(self.activity_types):
                 # Pre-select those not found in previous exclusions
-                value = activity not in self.preloaded_exclusions
+                value = activity not in self.loaded_exclusions
                 yield Checkbox(activity, value)
                 
 
